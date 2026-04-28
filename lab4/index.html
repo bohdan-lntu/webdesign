@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна №4 — CSS Селектори | Богдан Барулін КН-22</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="header-inner">
+      <h1 id="main-title">Вступ до CSS: Селектори, класи та псевдокласи</h1>
+      <p class="header-sub">Лабораторна робота №4 &mdash; Богдан Барулін, КН-22</p>
+    </div>
+  </header>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="main-nav">
+    <ul>
+      <li><a href="#typography">Типографіка</a></li>
+      <li><a href="#cards">Картки товарів</a></li>
+      <li><a href="#selectors">Селектори</a></li>
+      <li><a href="#form-section">Форма</a></li>
+      <li><a href="#pseudo">Псевдокласи</a></li>
+      <li><a href="https://developer.mozilla.org/uk/docs/Web/CSS" target="_blank">MDN Docs</a></li>
+      <li><a href="https://www.google.com/search?q=css+selectors" target="_blank">Google CSS</a></li>
+      <li><a href="https://css-tricks.com" target="_blank">CSS-Tricks</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ========== СЕКЦІЯ 1: ТИПОГРАФІКА ========== -->
+    <section id="typography">
+      <h2>1. Базові селектори — Типографіка</h2>
+      <p class="section-intro">
+        Стилізація тегів <code>h1–h3</code>, <code>p</code>, списків та таблиці
+        за допомогою <strong>селекторів тегів</strong>.
+      </p>
+
+      <h3>Заголовок третього рівня (h3)</h3>
+      <p>
+        Звичайний абзац тексту. CSS дозволяє керувати <em>кольором</em>,
+        <strong>розміром шрифту</strong>, відступами та вирівнюванням елементів.
+        Це перший абзац у секції.
+      </p>
+      <p>
+        Другий абзац у секції. Зверніть увагу на міжрядковий інтервал та
+        відстань між абзацами — це задано через властивості
+        <code>line-height</code> та <code>margin</code>.
+      </p>
+
+      <!-- Маркований список -->
+      <h3>Маркований список (ul)</h3>
+      <ul>
+        <li>Селектор тегу — <code>p { color: red; }</code></li>
+        <li>Селектор класу — <code>.card { padding: 16px; }</code></li>
+        <li>Селектор id — <code>#main-title { text-align: center; }</code></li>
+        <li>Атрибутний селектор — <code>[type="text"] { border: 1px solid; }</code></li>
+        <li>Псевдокласи — <code>a:hover { color: blue; }</code></li>
+      </ul>
+
+      <!-- Нумерований список -->
+      <h3>Нумерований список (ol)</h3>
+      <ol>
+        <li>Відкрити редактор VS Code</li>
+        <li>Створити файли <code>index.html</code> та <code>style.css</code></li>
+        <li>Підключити CSS через <code>&lt;link rel="stylesheet"&gt;</code></li>
+        <li>Написати стилі та перевірити в браузері</li>
+        <li>Валідувати код на validator.w3.org</li>
+      </ol>
+
+      <!-- Таблиця -->
+      <h3>Таблиця CSS-властивостей</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Властивість</th>
+            <th>Значення</th>
+            <th>Опис</th>
+            <th>Приклад</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>color</code></td>
+            <td>red / #ff0000 / rgb()</td>
+            <td>Колір тексту</td>
+            <td><code>color: #c9184a</code></td>
+          </tr>
+          <tr>
+            <td><code>font-size</code></td>
+            <td>px / em / rem / %</td>
+            <td>Розмір шрифту</td>
+            <td><code>font-size: 1.2rem</code></td>
+          </tr>
+          <tr>
+            <td><code>font-weight</code></td>
+            <td>normal / bold / 100–900</td>
+            <td>Товщина шрифту</td>
+            <td><code>font-weight: 700</code></td>
+          </tr>
+          <tr>
+            <td><code>text-align</code></td>
+            <td>left / center / right</td>
+            <td>Вирівнювання тексту</td>
+            <td><code>text-align: center</code></td>
+          </tr>
+          <tr>
+            <td><code>margin</code></td>
+            <td>px / auto</td>
+            <td>Зовнішній відступ</td>
+            <td><code>margin: 0 auto</code></td>
+          </tr>
+          <tr>
+            <td><code>padding</code></td>
+            <td>px / em</td>
+            <td>Внутрішній відступ</td>
+            <td><code>padding: 16px 24px</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ========== СЕКЦІЯ 2: КАРТКИ ТОВАРІВ ========== -->
+    <section id="cards">
+      <h2>2. Класи та ID — Картки товарів</h2>
+      <p class="section-intro">
+        5 карток: <code>.card</code> (базовий клас), <code>.card.featured</code>
+        (виділена картка), <code>#main-product</code> (унікальна),
+        <code>.card.new</code> (нова). Hover-ефект та <code>:active</code> на кнопці.
+      </p>
+
+      <div class="products-grid">
+
+        <!-- Картка 1: звичайна -->
+        <article class="card">
+          <div class="card-badge">Хіт продажів</div>
+          <div class="card-image">
+            <img src="https://picsum.photos/seed/laptop/300/200" alt="Ноутбук">
+          </div>
+          <div class="description">
+            <h3>Ноутбук ProBook 15</h3>
+            <p>Потужний ноутбук для роботи та навчання. 15.6", Intel Core i5, 16 GB RAM, 512 GB SSD.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price">24 999 грн</span>
+            <button class="btn-buy">Купити</button>
+          </div>
+        </article>
+
+        <!-- Картка 2: featured -->
+        <article class="card featured">
+          <div class="card-badge">Рекомендовано</div>
+          <div class="card-image">
+            <img src="https://picsum.photos/seed/phone/300/200" alt="Смартфон">
+          </div>
+          <div class="description">
+            <h3>Смартфон Galaxy S24</h3>
+            <p>Флагманський смартфон з AMOLED-дисплеєм, 200 МП камерою та AI-функціями.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price">36 990 грн</span>
+            <button class="btn-buy">Купити</button>
+          </div>
+        </article>
+
+        <!-- Картка 3: main-product + featured -->
+        <article class="card featured" id="main-product">
+          <div class="card-badge">Топ вибір</div>
+          <div class="card-image">
+            <img src="https://picsum.photos/seed/tablet/300/200" alt="Планшет">
+          </div>
+          <div class="description">
+            <h3>Планшет iPad Pro 12.9"</h3>
+            <p>Найпотужніший планшет для творчості та продуктивності з чипом M2 та Apple Pencil.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price">52 000 грн</span>
+            <button class="btn-buy">Купити</button>
+          </div>
+        </article>
+
+        <!-- Картка 4: new -->
+        <article class="card new">
+          <div class="card-badge">Новинка</div>
+          <div class="card-image">
+            <img src="https://picsum.photos/seed/headphones/300/200" alt="Навушники">
+          </div>
+          <div class="description">
+            <h3>Навушники AirPods Pro 2</h3>
+            <p>Бездротові навушники з активним шумоподавленням та просторовим звуком.</p>
+          </div>
+          <div class="card-footer">
+            <span class="price">8 499 грн</span>
+            <button class="btn-buy">Купити</button>
+          </div>
+        </article>
+
+        <!-- Картка 5: звичайна без description (для :has() демо) -->
+        <article class="card">
+          <div class="card-image">
+            <img src="https://picsum.photos/seed/watch/300/200" alt="Годинник">
+          </div>
+          <h3>Смарт-годинник Watch Ultra</h3>
+          <div class="card-footer">
+            <span class="price">14 999 грн</span>
+            <button class="btn-buy">Купити</button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Демонстрація складних селекторів -->
+      <div class="complex-selectors-demo">
+        <h3>Складні селектори (завдання 8)</h3>
+        <ul>
+          <li><code>.card.featured</code> — картки з обома класами одночасно (рожева рамка)</li>
+          <li><code>.card:not(.featured)</code> — картки БЕЗ класу .featured (сіра рамка)</li>
+          <li><code>.card:has(.description)</code> — картки, що містять елемент .description (синя тінь)</li>
+          <li><code>.card:is(.featured, .new)</code> — картки .featured АБО .new (зірочка в куті)</li>
+          <li><code>.card:where(.featured)</code> — як :is(), але нульова специфічність</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== СЕКЦІЯ 3: ТИПИ СЕЛЕКТОРІВ ========== -->
+    <section id="selectors">
+      <h2>3. Типи селекторів — Структурні відношення</h2>
+      <p class="section-intro">
+        Демонстрація: descendant <code>A B</code>, child <code>A &gt; B</code>,
+        adjacent sibling <code>A + B</code>, general sibling <code>A ~ B</code>.
+      </p>
+
+      <div class="selectors-grid">
+
+        <!-- Descendant: A B -->
+        <div class="demo-block descendant">
+          <h3>Descendant: <code>A B</code></h3>
+          <p>Стиль для <strong>всіх</strong> вкладених p</p>
+          <div>
+            <p>p всередині div (стилізований)</p>
+            <div>
+              <p>p глибше вкладений (теж стилізований)</p>
+            </div>
+          </div>
+          <p>Ще один p у .descendant (стилізований)</p>
+          <span>span — не стилізований</span>
+        </div>
+
+        <!-- Child: A > B -->
+        <div class="demo-block child">
+          <h3>Child: <code>A &gt; B</code></h3>
+          <p>Стиль тільки для <strong>прямих</strong> дочірніх p</p>
+          <p>Прямий p (стилізований)</p>
+          <p>Ще прямий p (стилізований)</p>
+          <div>
+            <p>p у вкладеному div (НЕ стилізований)</p>
+          </div>
+        </div>
+
+        <!-- Adjacent sibling: A + B -->
+        <div class="demo-block adjacent">
+          <h3>Adjacent: <code>A + B</code></h3>
+          <p>Стиль для <strong>першого</strong> p після h3</p>
+          <h3>Заголовок h3</h3>
+          <p>Перший p після h3 (стилізований)</p>
+          <p>Другий p після h3 (НЕ стилізований)</p>
+          <p>Третій p після h3 (НЕ стилізований)</p>
+        </div>
+
+        <!-- General sibling: A ~ B -->
+        <div class="demo-block general">
+          <h3>General: <code>A ~ B</code></h3>
+          <p>Стиль для <strong>всіх</strong> p після h3</p>
+          <h3>Заголовок h3</h3>
+          <p>Перший p після h3 (стилізований)</p>
+          <p>Другий p після h3 (стилізований)</p>
+          <p>Третій p після h3 (стилізований)</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== СЕКЦІЯ 4: ФОРМА + АТРИБУТНІ СЕЛЕКТОРИ ========== -->
+    <section id="form-section">
+      <h2>4. Форма — Атрибутні селектори та псевдокласи стану</h2>
+      <p class="section-intro">
+        Атрибутні селектори: <code>[type="text"]</code>, <code>[disabled]</code>,
+        <code>[required]</code>, <code>[name^="user"]</code>, <code>[name$="login"]</code>,
+        <code>[href^="https"]</code>, <code>[href*="google"]</code>.
+        Псевдокласи: <code>:focus</code>, <code>:valid</code>, <code>:invalid</code>,
+        <code>:checked</code>, <code>:disabled</code>.
+      </p>
+
+      <form id="demo-form" action="#" method="post" novalidate>
+
+        <div class="form-group">
+          <label for="userName">Ім'я користувача <span class="req">*</span></label>
+          <!-- [type="text"], [name^="user"], [required] -->
+          <input type="text" id="userName" name="user_name"
+                 placeholder="Введіть ваше ім'я"
+                 required minlength="2">
+          <small class="hint">Мінімум 2 символи. Стиль через <code>[name^="user"]</code> та <code>[required]</code></small>
+        </div>
+
+        <div class="form-group">
+          <label for="userEmail">Email <span class="req">*</span></label>
+          <!-- :valid, :invalid підсвічування -->
+          <input type="email" id="userEmail" name="user_email"
+                 placeholder="example@mail.com"
+                 required>
+          <small class="hint">Підсвічується зеленим (:valid) або червоним (:invalid)</small>
+        </div>
+
+        <div class="form-group">
+          <label for="userLogin">Логін <span class="req">*</span></label>
+          <!-- [name$="login"] -->
+          <input type="text" id="userLogin" name="user_login"
+                 placeholder="my_login"
+                 required pattern="[a-zA-Z0-9_]{3,20}">
+          <small class="hint">Стиль через <code>[name$="login"]</code> — латиниця, цифри, підкреслення</small>
+        </div>
+
+        <div class="form-group">
+          <label for="userPass">Пароль <span class="req">*</span></label>
+          <input type="password" id="userPass" name="user_pass"
+                 placeholder="Мінімум 8 символів"
+                 required minlength="8">
+        </div>
+
+        <div class="form-group">
+          <label for="userPhone">Телефон</label>
+          <input type="tel" id="userPhone" name="user_phone"
+                 placeholder="+380991234567">
+          <small class="hint">Необов'язкове поле</small>
+        </div>
+
+        <div class="form-group">
+          <label for="disabledField">Заблоковане поле</label>
+          <!-- [disabled] — сірий стиль -->
+          <input type="text" id="disabledField" name="disabled_field"
+                 value="Це поле недоступне"
+                 disabled>
+          <small class="hint">Стиль через <code>[disabled]</code></small>
+        </div>
+
+        <div class="form-group">
+          <label for="userSite">Сайт</label>
+          <!-- [href^="https"] застосовано нижче -->
+          <input type="url" id="userSite" name="user_site"
+                 placeholder="https://example.com">
+        </div>
+
+        <div class="form-group">
+          <label>Роль</label>
+          <div class="radio-group">
+            <!-- :checked -->
+            <label class="radio-label">
+              <input type="radio" name="role" value="student" checked> Студент
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="role" value="teacher"> Викладач
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="role" value="admin"> Адміністратор
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Інтереси</label>
+          <div class="checkbox-group">
+            <label class="check-label">
+              <input type="checkbox" name="interests" value="web" checked> Веб-розробка
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="interests" value="design"> UI/UX Дизайн
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="interests" value="data"> Data Science
+            </label>
+            <!-- :disabled -->
+            <label class="check-label">
+              <input type="checkbox" name="interests" value="ml" disabled> ML (незабаром)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city">Місто</label>
+          <select id="city" name="user_city">
+            <option value="">— обрати —</option>
+            <option value="kyiv">Київ</option>
+            <option value="lviv">Львів</option>
+            <option value="kharkiv">Харків</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Про себе</label>
+          <textarea id="bio" name="user_bio" rows="4"
+                    placeholder="Коротко розкажіть про себе..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">Надіслати</button>
+          <button type="reset" class="btn-reset">Очистити</button>
+        </div>
+
+        <!-- Посилання з атрибутними селекторами [href^="https"] та [href*="google"] -->
+        <div class="form-links">
+          <h3>Зовнішні посилання (атрибутний селектор)</h3>
+          <p>
+            <a href="https://developer.mozilla.org">MDN Web Docs</a> &mdash;
+            документація HTML/CSS/JS
+          </p>
+          <p>
+            <a href="https://www.google.com/search?q=css+selectors">Google: CSS Selectors</a> &mdash;
+            пошук по CSS
+          </p>
+          <p>
+            <a href="https://css-tricks.com">CSS-Tricks</a> &mdash;
+            корисний ресурс по CSS
+          </p>
+          <p>
+            <a href="https://github.com">GitHub</a> &mdash;
+            репозиторій коду
+          </p>
+          <p>
+            <a href="/relative-link">Відносне посилання</a> &mdash;
+            без іконки (не https)
+          </p>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- ========== СЕКЦІЯ 5: СТРУКТУРНІ ПСЕВДОКЛАСИ ========== -->
+    <section id="pseudo">
+      <h2>5. Структурні псевдокласи</h2>
+      <p class="section-intro">
+        Демонстрація: <code>:first-child</code>, <code>:last-child</code>,
+        <code>:nth-child()</code>, <code>:nth-last-child()</code>,
+        <code>:only-child</code>, <code>:nth-of-type()</code>.
+      </p>
+
+      <div class="pseudo-grid">
+
+        <!-- first-child / last-child -->
+        <div class="pseudo-block">
+          <h3><code>:first-child</code> / <code>:last-child</code></h3>
+          <ul class="pseudo-list" id="list-first-last">
+            <li>Перший елемент (:first-child) — червоний</li>
+            <li>Другий елемент</li>
+            <li>Третій елемент</li>
+            <li>Четвертий елемент</li>
+            <li>П'ятий елемент (:last-child) — синій</li>
+          </ul>
+        </div>
+
+        <!-- nth-child -->
+        <div class="pseudo-block">
+          <h3><code>:nth-child()</code></h3>
+          <ul class="pseudo-list" id="list-nth">
+            <li>1-й</li>
+            <li>2-й — жовтий (:nth-child(2))</li>
+            <li>3-й</li>
+            <li>4-й — жовтий (:nth-child(2n))</li>
+            <li>5-й</li>
+            <li>6-й — жовтий (:nth-child(2n))</li>
+          </ul>
+        </div>
+
+        <!-- nth-last-child -->
+        <div class="pseudo-block">
+          <h3><code>:nth-last-child()</code></h3>
+          <ul class="pseudo-list" id="list-nth-last">
+            <li>1-й з початку</li>
+            <li>2-й з початку</li>
+            <li>3-й з початку</li>
+            <li>2-й з кінця (:nth-last-child(2)) — зелений</li>
+            <li>1-й з кінця (:last-child)</li>
+          </ul>
+        </div>
+
+        <!-- only-child + nth-of-type -->
+        <div class="pseudo-block">
+          <h3><code>:only-child</code> / <code>:nth-of-type()</code></h3>
+
+          <!-- only-child: єдиний p у div -->
+          <div class="only-child-demo">
+            <p>Єдиний абзац у div (:only-child) — жирний</p>
+          </div>
+          <div class="only-child-demo">
+            <p>Перший p (не єдиний)</p>
+            <span>span-елемент</span>
+            <p>Другий p — не only-child</p>
+          </div>
+
+          <!-- nth-of-type: різниця з nth-child -->
+          <div class="nth-of-type-demo">
+            <h3>nth-of-type:</h3>
+            <p>Перший p (:nth-of-type(1))</p>
+            <span>span (ігнорується при nth-of-type для p)</span>
+            <p>Другий p (:nth-of-type(2)) — фіолетовий</p>
+            <p>Третій p (:nth-of-type(3))</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Розробник</h3>
+        <p><strong>Богдан Барулін</strong></p>
+        <p>Група КН-22</p>
+        <p>Лабораторна робота №4</p>
+      </div>
+      <div class="footer-col">
+        <h3>Зв'язок</h3>
+        <p>Email: <a href="mailto:barulin@example.com">barulin@example.com</a></p>
+        <p>Телефон: <a href="tel:+380994366960">+38 099 436 69 60</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Ресурси</h3>
+        <p><a href="https://developer.mozilla.org/uk/docs/Web/CSS" target="_blank">MDN CSS Docs</a></p>
+        <p><a href="https://css-tricks.com" target="_blank">CSS-Tricks</a></p>
+        <p><a href="https://www.google.com/search?q=css+selectors" target="_blank">Google</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Богдан Барулін &mdash; КН-22. Лабораторна робота з CSS.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

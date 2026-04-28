@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лабораторна робота №7 — Flexbox та Grid</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">WebTech</div>
+      <nav class="header-nav">
+        <a href="#">Головна</a>
+        <a href="#">Про нас</a>
+        <a href="#">Блог</a>
+        <a href="#">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN LAYOUT (Flexbox: sidebar + content) ===== -->
+  <div class="page-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Навігація</h2>
+        <nav class="sidebar-nav">
+          <a href="#" class="sidebar-link active">Огляд</a>
+          <a href="#" class="sidebar-link">Технології</a>
+          <a href="#" class="sidebar-link">Проекти</a>
+          <a href="#" class="sidebar-link">Команда</a>
+          <a href="#" class="sidebar-link">Контакти</a>
+        </nav>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Теми</h2>
+        <ul class="tag-list">
+          <li><a href="#" class="tag">HTML5</a></li>
+          <li><a href="#" class="tag">CSS3</a></li>
+          <li><a href="#" class="tag">Flexbox</a></li>
+          <li><a href="#" class="tag">Grid</a></li>
+          <li><a href="#" class="tag">Адаптивність</a></li>
+          <li><a href="#" class="tag">JavaScript</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Корисні посилання</h2>
+        <ul class="link-list">
+          <li><a href="#">MDN Web Docs</a></li>
+          <li><a href="#">CSS-Tricks</a></li>
+          <li><a href="#">Can I Use</a></li>
+          <li><a href="#">W3Schools</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- Intro -->
+      <section class="intro-block">
+        <h1 class="intro-title">Макетування з Flexbox та Grid</h1>
+        <p class="intro-text">
+          Сучасні CSS-технології дозволяють будувати гнучкі, адаптивні та зручні
+          інтерфейси. Flexbox відмінно підходить для одновимірних макетів,
+          а CSS Grid — для двовимірних сіток.
+        </p>
+      </section>
+
+      <!-- ===== GRID OF CARDS ===== -->
+      <section class="cards-section">
+        <h2 class="section-title">Картки технологій</h2>
+
+        <div class="cards-grid">
+
+          <article class="card">
+            <div class="card-icon">⚡</div>
+            <h3 class="card-title">Flexbox</h3>
+            <p class="card-desc">
+              Одновимірна модель розкладки. Ідеальна для рядів і стовпців
+              з гнучким розподілом простору.
+            </p>
+            <a href="#" class="card-btn">Детальніше</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🔲</div>
+            <h3 class="card-title">CSS Grid</h3>
+            <p class="card-desc">
+              Двовимірна сітка для побудови складних макетів сторінок
+              з рядками та колонками одночасно.
+            </p>
+            <a href="#" class="card-btn">Детальніше</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📱</div>
+            <h3 class="card-title">Адаптивність</h3>
+            <p class="card-desc">
+              Media queries дозволяють сайту коректно виглядати
+              на мобільних, планшетах та десктопах.
+            </p>
+            <a href="#" class="card-btn">Детальніше</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🎨</div>
+            <h3 class="card-title">CSS-змінні</h3>
+            <p class="card-desc">
+              Custom properties дозволяють зберігати повторювані
+              значення та централізовано керувати темою.
+            </p>
+            <a href="#" class="card-btn">Детальніше</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🔤</div>
+            <h3 class="card-title">Шрифти</h3>
+            <p class="card-desc">
+              Веб-шрифти (Google Fonts, system fonts) та типографіка —
+              важлива частина сучасного веб-дизайну.
+            </p>
+            <a href="#" class="card-btn">Детальніше</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🏗️</div>
+            <h3 class="card-title">Семантика HTML</h3>
+            <p class="card-desc">
+              Правильна структура документа покращує доступність,
+              SEO та підтримуваність коду.
+            </p>
+            <a href="#" class="card-btn">Детальніше</a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Extra text block -->
+      <section class="info-block">
+        <h2 class="section-title">Про лабораторну роботу</h2>
+        <p>
+          Дана лабораторна робота присвячена практичному застосуванню сучасних
+          технологій CSS для створення адаптивних веб-макетів. Виконав студент групи
+          КН-22 <strong>Барулін Богдан</strong>.
+        </p>
+        <p>
+          У роботі реалізовано: двоколонковий макет на Flexbox (sidebar + content),
+          сітку карток на CSS Grid з адаптивними колонками, а також responsive-поведінку
+          через media queries для мобільних, планшетних та десктопних екранів.
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Лабораторна робота №7 &mdash; Flexbox та Grid</p>
+      <p>Студент: Барулін Богдан &middot; Група: КН-22</p>
+    </div>
+  </footer>
+
+</body>
+</html>

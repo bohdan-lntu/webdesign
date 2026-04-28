@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна №3 — Головна</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f8edeb;
+      color: #333;
+    }
+    header {
+      background-color: #c9184a;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.6rem; }
+    nav {
+      background-color: #ff4d6d;
+      padding: 10px 40px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover, nav a.active { background-color: #c9184a; }
+    main { padding: 30px 40px; max-width: 1000px; margin: 0 auto; }
+    section { margin-bottom: 40px; }
+    h2 { color: #c9184a; margin-bottom: 14px; border-bottom: 2px solid #ffb3c1; padding-bottom: 6px; }
+    h3 { color: #ff4d6d; margin: 12px 0 8px; }
+
+    /* Текст */
+    .text-demo p { margin-bottom: 8px; line-height: 1.7; }
+
+    /* Таблиця */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    th {
+      background-color: #c9184a;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+    td {
+      border: 1px solid #ffb3c1;
+      padding: 10px 14px;
+      text-align: center;
+    }
+    tr:nth-child(even) td { background-color: #fff0f3; }
+    tr:hover td { background-color: #ffe0e6; }
+
+    /* Фото */
+    .photos {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .photos figure {
+      flex: 1 1 280px;
+      text-align: center;
+    }
+    .photos img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 3px solid #ffb3c1;
+    }
+    .photos figcaption {
+      margin-top: 6px;
+      font-style: italic;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background-color: #c9184a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a { color: #ffb3c1; }
+    footer p { margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Веб-сайт студента</h1>
+  <span>Лабораторна робота №3</span>
+</header>
+
+<nav>
+  <a href="index.html" class="active">Головна</a>
+  <a href="map.html">Карта</a>
+  <a href="form.html">Форма</a>
+  <a href="media.html">Медіа</a>
+</nav>
+
+<main>
+
+  <!-- РОЗДІЛ 1: Форматування тексту -->
+  <section class="text-demo">
+    <h2>Різне оформлення тексту</h2>
+
+    <h3>Шрифти та розмір</h3>
+    <p><small>Дрібний текст (small)</small> &nbsp;|&nbsp;
+       Звичайний текст &nbsp;|&nbsp;
+       <big>Збільшений текст (big)</big> &nbsp;|&nbsp;
+       <font size="6" color="#c9184a">Великий текст (font size=6)</font>
+    </p>
+
+    <h3>Стилі тексту</h3>
+    <p>
+      <b>Жирний (bold)</b> &nbsp;|&nbsp;
+      <i>Курсив (italic)</i> &nbsp;|&nbsp;
+      <u>Підкреслений (underline)</u> &nbsp;|&nbsp;
+      <s>Закреслений (strike)</s> &nbsp;|&nbsp;
+      <mark>Виділений маркером</mark>
+    </p>
+    <p>
+      Текст з <sup>надрядковим</sup> і <sub>підрядковим</sub> символом.
+    </p>
+    <p>
+      <font color="grey" face="Courier New">Текст шрифтом Courier New сірого кольору (тег &lt;font&gt;)</font>
+    </p>
+
+    <h3>Кольори тексту та фону</h3>
+    <p style="color:#c9184a; font-size:1.1rem; font-weight:bold;">Червоний жирний текст</p>
+    <p style="color:#0077b6; font-size:1.1rem;">Синій текст</p>
+    <p style="background-color:#ffd166; color:#333; padding:6px 10px; border-radius:4px; display:inline-block;">
+      Текст із жовтим фоном
+    </p>
+
+    <h3>Цитати та код</h3>
+    <blockquote style="border-left:4px solid #c9184a; padding-left:16px; color:#555; margin:10px 0;">
+      «Інтернет — це найбільша в світі бібліотека. Щоправда, всі книжки в ній лежать на підлозі.»<br>
+      <em>— Джон Аллен Паулос</em>
+    </blockquote>
+    <p>Приклад коду: <code style="background:#f4f4f4; padding:2px 6px; border-radius:3px; font-family:monospace;">&lt;p&gt;Hello, World!&lt;/p&gt;</code></p>
+
+    <h3>Списки</h3>
+    <ul style="margin-left:20px; line-height:1.8;">
+      <li>Мова розмітки <b>HTML</b></li>
+      <li>Мова стилів <b>CSS</b></li>
+      <li>Мова програмування <b>JavaScript</b></li>
+    </ul>
+    <ol style="margin-left:20px; margin-top:8px; line-height:1.8;">
+      <li>Відкрити редактор коду</li>
+      <li>Написати HTML-розмітку</li>
+      <li>Зберегти файл та відкрити в браузері</li>
+    </ol>
+  </section>
+
+  <!-- РОЗДІЛ 2: Таблиця -->
+  <section>
+    <h2>Таблиця з об'єднаними комірками</h2>
+    <p style="margin-bottom:10px;">Розклад занять на тиждень:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Предмет</th>
+          <th>Понеділок</th>
+          <th>Середа</th>
+          <th>П'ятниця</th>
+          <th>Аудиторія</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">1</td>
+          <td>Веб-технології</td>
+          <td>08:00–09:30</td>
+          <td>—</td>
+          <td>10:00–11:30</td>
+          <td rowspan="2">А-201</td>
+        </tr>
+        <tr>
+          <td><i>Лабораторна</i></td>
+          <td>—</td>
+          <td>09:45–11:15</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Бази даних</td>
+          <td colspan="2" style="background:#fff0f3;">09:45–11:15 (лекція + практика)</td>
+          <td>—</td>
+          <td>Б-104</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Алгоритми</td>
+          <td>11:30–13:00</td>
+          <td>11:30–13:00</td>
+          <td>11:30–13:00</td>
+          <td>В-302</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td colspan="4" style="text-align:left; color:#c9184a; font-weight:bold;">
+            Самостійна робота / консультації
+          </td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- РОЗДІЛ 3: Фотографії -->
+  <section>
+    <h2>Фотогалерея</h2>
+    <div class="photos">
+      <figure>
+        <img src="https://picsum.photos/seed/city/600/400" alt="Місто">
+        <figcaption>Нічне місто</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/nature/600/400" alt="Природа">
+        <figcaption>Краса природи</figcaption>
+      </figure>
+      <figure>
+        <img src="https://picsum.photos/seed/tech/600/400" alt="Технології">
+        <figcaption>Сучасні технології</figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><b>Розробник:</b> Студент групи КН-31</p>
+  <p>Email: <a href="mailto:student@example.com">student@example.com</a></p>
+  <p>Телефон: <a href="tel:+380991234567" style="color:#ffb3c1;">+38 (099) 123-45-67</a></p>
+  <p style="margin-top:8px; font-size:0.85rem;">© 2024 Лабораторна робота №3. Всі права захищені.</p>
+</footer>
+
+</body>
+</html>

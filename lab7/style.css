@@ -1,0 +1,474 @@
+/* ============================================================
+   Лабораторна робота №7 — Flexbox та Grid
+   Студент: Барулін Богдан, КН-22
+   ============================================================ */
+
+/* ---------- CSS-змінні (теми) ---------- */
+:root {
+  --color-primary:   #4f46e5;
+  --color-primary-h: #4338ca;
+  --color-accent:    #06b6d4;
+  --color-bg:        #f8fafc;
+  --color-surface:   #ffffff;
+  --color-sidebar:   #1e1b4b;
+  --color-text:      #1e293b;
+  --color-text-muted:#64748b;
+  --color-border:    #e2e8f0;
+  --radius:          10px;
+  --shadow:          0 2px 12px rgba(0,0,0,.08);
+  --transition:      .25s ease;
+}
+
+/* ---------- Базові скидання ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  background-color: var(--color-primary);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(79,70,229,.35);
+}
+
+.header-inner {
+  /* Flexbox: лого ліворуч, навігація праворуч */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.header-nav a {
+  font-size: .95rem;
+  opacity: .9;
+  transition: opacity var(--transition);
+}
+
+.header-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   PAGE WRAPPER — двоколонковий макет (Flexbox)
+   ============================================================ */
+.page-wrapper {
+  display: flex;              /* Flexbox-контейнер */
+  align-items: flex-start;    /* колонки вирівнюються по верхньому краю */
+  gap: 24px;
+  max-width: 1280px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   SIDEBAR (ліва колонка, ~25%)
+   ============================================================ */
+.sidebar {
+  flex: 0 0 260px;           /* фіксована ширина, не росте й не стискається */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 80px;                 /* прилипає під header */
+}
+
+.sidebar-section {
+  background-color: var(--color-sidebar);
+  color: #e0e7ff;
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.sidebar-title {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(165,180,252,.2);
+}
+
+/* Навігаційні посилання */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: .9rem;
+  transition: background var(--transition), color var(--transition);
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Теги */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: rgba(165,180,252,.15);
+  color: #c7d2fe;
+  border: 1px solid rgba(165,180,252,.3);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: .8rem;
+  transition: background var(--transition);
+}
+
+.tag:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* Список посилань */
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-list a {
+  font-size: .875rem;
+  color: #a5b4fc;
+  transition: color var(--transition);
+}
+
+.link-list a::before {
+  content: '→ ';
+}
+
+.link-list a:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   MAIN CONTENT (права колонка, ~75%)
+   ============================================================ */
+.main-content {
+  flex: 1;                   /* займає весь залишковий простір */
+  min-width: 0;              /* дозволяє блоку коректно стискатись */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Intro-блок */
+.intro-block {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  box-shadow: var(--shadow);
+}
+
+.intro-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.intro-text {
+  font-size: 1.05rem;
+  opacity: .9;
+  max-width: 600px;
+}
+
+/* Заголовок секції */
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+  padding-left: 12px;
+  border-left: 4px solid var(--color-primary);
+}
+
+/* ============================================================
+   CARDS GRID — CSS Grid
+   ============================================================ */
+.cards-section {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+}
+
+.cards-grid {
+  display: grid;
+  /* адаптивна кількість колонок: мінімум 200px, максимум 1fr */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Картка */
+.card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+/* Hover-ефект */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(79,70,229,.18);
+  border-color: var(--color-primary);
+}
+
+.card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.card-desc {
+  font-size: .875rem;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.card-btn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 7px 16px;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 6px;
+  font-size: .8rem;
+  font-weight: 600;
+  align-self: flex-start;
+  transition: background var(--transition);
+}
+
+.card-btn:hover {
+  background-color: var(--color-primary-h);
+}
+
+/* Info-блок */
+.info-block {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-block p {
+  font-size: .95rem;
+  color: var(--color-text-muted);
+}
+
+.info-block strong {
+  color: var(--color-text);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background-color: var(--color-sidebar);
+  color: #a5b4fc;
+  margin-top: 48px;
+}
+
+.footer-inner {
+  /* Flexbox: два рядки тексту по центру */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+  font-size: .875rem;
+}
+
+/* ============================================================
+   АДАПТИВНІСТЬ — Media Queries
+   ============================================================ */
+
+/* --- Планшет (до 1024px) --- */
+@media (max-width: 1024px) {
+  .page-wrapper {
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .sidebar {
+    flex: 0 0 200px;       /* зменшуємо sidebar */
+    top: 72px;
+  }
+
+  .intro-title {
+    font-size: 1.5rem;
+  }
+
+  .intro-block {
+    padding: 28px 24px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+  }
+}
+
+/* --- Мобільні (до 768px) --- */
+@media (max-width: 768px) {
+  .page-wrapper {
+    flex-direction: column;  /* колонки → один стовпець */
+    margin: 16px auto;
+    padding: 0 12px;
+    gap: 16px;
+  }
+
+  .sidebar {
+    flex: 0 0 auto;          /* sidebar більше не фіксованої ширини */
+    width: 100%;             /* займає повну ширину над контентом */
+    position: static;        /* прибираємо sticky */
+  }
+
+  .sidebar-section {
+    padding: 16px;
+  }
+
+  .header-inner {
+    padding: 0 16px;
+  }
+
+  .header-nav {
+    gap: 16px;
+  }
+
+  .header-nav a {
+    font-size: .85rem;
+  }
+
+  .intro-title {
+    font-size: 1.3rem;
+  }
+
+  .intro-text {
+    font-size: .95rem;
+  }
+
+  .intro-block {
+    padding: 22px 18px;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .cards-section,
+  .info-block {
+    padding: 18px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px 14px;
+  }
+
+  .footer-inner {
+    padding: 16px;
+  }
+}
+
+/* --- Дуже малі екрани (до 480px) --- */
+@media (max-width: 480px) {
+  .header-nav {
+    gap: 10px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;  /* рівно 2 колонки на малих телефонах */
+  }
+
+  .intro-title {
+    font-size: 1.15rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}

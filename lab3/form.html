@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна №3 — Форма</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f8edeb;
+      color: #333;
+    }
+    header {
+      background-color: #c9184a;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.6rem; }
+    nav {
+      background-color: #ff4d6d;
+      padding: 10px 40px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover, nav a.active { background-color: #c9184a; }
+    main { padding: 30px 40px; max-width: 800px; margin: 0 auto; }
+    h2 { color: #c9184a; margin-bottom: 14px; border-bottom: 2px solid #ffb3c1; padding-bottom: 6px; }
+
+    .form-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .form-card h3 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    label .required { color: #c9184a; margin-left: 3px; }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="password"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #ffb3c1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background-color: #fff0f3;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #c9184a;
+      box-shadow: 0 0 0 3px rgba(201,24,74,0.15);
+      background-color: white;
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .radio-group label, .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: normal;
+      cursor: pointer;
+      color: #333;
+      background: #fff0f3;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 2px solid #ffb3c1;
+      transition: all 0.2s;
+    }
+    .radio-group label:hover, .checkbox-group label:hover {
+      background: #ffd6df;
+      border-color: #c9184a;
+    }
+    input[type="radio"], input[type="checkbox"] {
+      width: auto;
+      accent-color: #c9184a;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #c9184a;
+    }
+    .range-value {
+      text-align: right;
+      font-size: 0.9rem;
+      color: #c9184a;
+      font-weight: bold;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    button[type="submit"] {
+      background-color: #c9184a;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button[type="submit"]:hover { background-color: #a31240; }
+    button[type="reset"] {
+      background-color: white;
+      color: #c9184a;
+      border: 2px solid #c9184a;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button[type="reset"]:hover {
+      background-color: #fff0f3;
+    }
+
+    .success-msg {
+      display: none;
+      background: #d4edda;
+      border: 1px solid #28a745;
+      border-radius: 6px;
+      padding: 14px 18px;
+      color: #155724;
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    footer {
+      background-color: #c9184a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a { color: #ffb3c1; }
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      main { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Форма зворотного зв'язку</h1>
+  <span>Лабораторна робота №3</span>
+</header>
+
+<nav>
+  <a href="index.html">Головна</a>
+  <a href="map.html">Карта</a>
+  <a href="form.html" class="active">Форма</a>
+  <a href="media.html">Медіа</a>
+</nav>
+
+<main>
+  <h2>Форма реєстрації та зворотного зв'язку</h2>
+
+  <form id="mainForm" action="#" method="post" onsubmit="handleSubmit(event)">
+
+    <!-- Особисті дані -->
+    <div class="form-card">
+      <h3>Особисті дані</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="lastName">Прізвище <span class="required">*</span></label>
+          <input type="text" id="lastName" name="last_name" placeholder="Іванченко" required>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Ім'я <span class="required">*</span></label>
+          <input type="text" id="firstName" name="first_name" placeholder="Іван" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="middleName">По батькові</label>
+          <input type="text" id="middleName" name="middle_name" placeholder="Петрович">
+        </div>
+        <div class="form-group">
+          <label for="birthDate">Дата народження</label>
+          <input type="date" id="birthDate" name="birth_date">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Стать</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="male"> Чоловіча</label>
+          <label><input type="radio" name="gender" value="female"> Жіноча</label>
+          <label><input type="radio" name="gender" value="other"> Інша</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Контактна інформація -->
+    <div class="form-card">
+      <h3>Контактна інформація</h3>
+
+      <div class="form-group">
+        <label for="email">Електронна пошта <span class="required">*</span></label>
+        <input type="email" id="email" name="email"
+               placeholder="student@example.com"
+               value="student@example.com"
+               required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone"
+                 placeholder="+38 (099) 123-45-67"
+                 pattern="[\+]?[0-9\s\(\)\-]{10,20}">
+        </div>
+        <div class="form-group">
+          <label for="website">Веб-сайт</label>
+          <input type="url" id="website" name="website" placeholder="https://example.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="city">Місто</label>
+        <select id="city" name="city">
+          <option value="">— оберіть місто —</option>
+          <option value="kyiv">Київ</option>
+          <option value="lviv">Львів</option>
+          <option value="kharkiv">Харків</option>
+          <option value="odesa">Одеса</option>
+          <option value="dnipro">Дніпро</option>
+          <option value="zaporizhzhia">Запоріжжя</option>
+          <option value="other">Інше</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Навчання -->
+    <div class="form-card">
+      <h3>Відомості про навчання</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="group">Група</label>
+          <input type="text" id="group" name="group" placeholder="КН-31">
+        </div>
+        <div class="form-group">
+          <label for="year">Курс</label>
+          <input type="number" id="year" name="year" min="1" max="6" placeholder="3">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="specialty">Спеціальність</label>
+        <select id="specialty" name="specialty">
+          <option value="">— оберіть спеціальність —</option>
+          <option value="cs">Комп'ютерні науки (122)</option>
+          <option value="se">Інженерія програмного забезпечення (121)</option>
+          <option value="it">Інформаційні технології (126)</option>
+          <option value="cyber">Кібербезпека (125)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Улюблені дисципліни</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="subjects" value="web"> Веб-технології</label>
+          <label><input type="checkbox" name="subjects" value="db"> Бази даних</label>
+          <label><input type="checkbox" name="subjects" value="algo"> Алгоритми</label>
+          <label><input type="checkbox" name="subjects" value="oop"> ООП</label>
+          <label><input type="checkbox" name="subjects" value="os"> Операційні системи</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gpa">Середній бал: <span id="gpaDisplay" class="required">75</span></label>
+        <input type="range" id="gpa" name="gpa" min="60" max="100" value="75"
+               oninput="document.getElementById('gpaDisplay').textContent=this.value">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Пароль для кабінету <span class="required">*</span></label>
+        <input type="password" id="password" name="password"
+               placeholder="Мінімум 8 символів"
+               minlength="8" required>
+      </div>
+    </div>
+
+    <!-- Повідомлення -->
+    <div class="form-card">
+      <h3>Повідомлення</h3>
+
+      <div class="form-group">
+        <label for="subject">Тема звернення</label>
+        <input type="text" id="subject" name="subject" placeholder="Питання щодо лабораторних робіт">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Текст повідомлення <span class="required">*</span></label>
+        <textarea id="message" name="message" rows="5"
+                  placeholder="Введіть ваше запитання або коментар..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="subscribe" value="yes">
+            Підписатись на розсилку новин
+          </label>
+          <label>
+            <input type="checkbox" name="agree" required>
+            Погоджуюсь з умовами використання <span class="required">*</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button type="submit">Надіслати</button>
+        <button type="reset">Очистити</button>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        Дякуємо! Ваше повідомлення успішно надіслано. Ми зв'яжемося з вами на вказану пошту.
+      </div>
+    </div>
+
+  </form>
+</main>
+
+<footer>
+  <p><b>Розробник:</b> Студент групи КН-31</p>
+  <p>Email: <a href="mailto:student@example.com">student@example.com</a></p>
+  <p>Телефон: <a href="tel:+380991234567" style="color:#ffb3c1;">+38 (099) 123-45-67</a></p>
+  <p style="margin-top:8px; font-size:0.85rem;">© 2024 Лабораторна робота №3. Всі права захищені.</p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('successMsg').style.display = 'none';
+    }, 5000);
+  }
+</script>
+
+</body>
+</html>

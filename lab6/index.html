@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна №6 — Каскад, специфічність, змінні CSS | Богдан Барулін КН-22</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-inner">
+    <h1>Каскад стилів, специфічність та змінні CSS</h1>
+    <p class="header-sub">Лабораторна робота №6 &mdash; Богдан Барулін, КН-22</p>
+  </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav id="main-nav">
+  <ul>
+    <li><a href="#cascade">Каскад</a></li>
+    <li><a href="#specificity">Специфічність</a></li>
+    <li><a href="#inheritance">Спадкування</a></li>
+    <li><a href="#conflict">Конфлікт</a></li>
+    <li><a href="#variables">CSS-змінні</a></li>
+    <li><a href="#theme">Тема</a></li>
+    <li><a href="#cards">Картки</a></li>
+    <li><a href="#answers">Відповіді</a></li>
+  </ul>
+  <!-- Перемикач теми -->
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Змінити тему">
+    <i class="fa-solid fa-moon" id="themeIcon"></i>
+    <span id="themeLabel">Темна</span>
+  </button>
+</nav>
+
+<main>
+
+  <!-- ========================================================
+       СЕКЦІЯ 1: КАСКАД — порядок слідування
+  ========================================================= -->
+  <section id="cascade">
+    <h2><i class="fa-solid fa-layer-group"></i> Каскад — Порядок слідування</h2>
+    <p class="section-intro">
+      Коли два правила мають <strong>однакову специфічність</strong>,
+      перемагає те, що стоїть <strong>останнім</strong> у CSS-файлі.
+    </p>
+
+    <div class="demo-grid">
+
+      <!-- Демо 1: однакові селектори -->
+      <div class="demo-block">
+        <div class="demo-label">Приклад: два h1 — однакова специфічність</div>
+        <div class="code-pair">
+          <pre><code>h1 { color: red; }   /* 1-е правило */
+h1 { color: blue; }  /* 2-е правило */</code></pre>
+          <div class="result-arrow"><i class="fa-solid fa-arrow-right"></i> Результат:</div>
+          <p class="cascade-demo-h1">Цей заголовок — синій (перемагає останнє)</p>
+        </div>
+        <p class="explanation">
+          <i class="fa-solid fa-circle-info"></i>
+          Обидва селектори <code>h1</code> мають специфічність <code>0001</code>.
+          Виграє правило, що стоїть нижче у файлі — <code>color: blue</code>.
+        </p>
+      </div>
+
+      <!-- Демо 2: порядок підключення файлів -->
+      <div class="demo-block">
+        <div class="demo-label">Порядок підключення файлів CSS</div>
+        <pre><code>&lt;!-- reset.css підключено першим --&gt;
+&lt;link rel="stylesheet" href="reset.css"&gt;
+&lt;!-- style.css підключено другим —
+     його правила переважають --&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+        <p class="explanation">
+          <i class="fa-solid fa-circle-info"></i>
+          Файл, підключений <strong>пізніше</strong>, перекриває попередній
+          за умови однакової специфічності.
+        </p>
+      </div>
+
+      <!-- Демо 3: inline > internal > external -->
+      <div class="demo-block">
+        <div class="demo-label">Пріоритет джерел стилів</div>
+        <div class="source-priority">
+          <div class="sp-item sp-browser">
+            <span class="sp-num">1</span>
+            <div>
+              <strong>Стилі браузера</strong>
+              <small>User Agent Stylesheet — найнижчий пріоритет</small>
+            </div>
+          </div>
+          <div class="sp-item sp-external">
+            <span class="sp-num">2</span>
+            <div>
+              <strong>Зовнішній CSS</strong>
+              <small><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></small>
+            </div>
+          </div>
+          <div class="sp-item sp-internal">
+            <span class="sp-num">3</span>
+            <div>
+              <strong>Внутрішній CSS</strong>
+              <small><code>&lt;style&gt; ... &lt;/style&gt;</code></small>
+            </div>
+          </div>
+          <div class="sp-item sp-inline">
+            <span class="sp-num">4</span>
+            <div>
+              <strong>Вбудований CSS</strong>
+              <small><code>style="color: red"</code> — найвищий пріоритет</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 2: СПЕЦИФІЧНІСТЬ
+  ========================================================= -->
+  <section id="specificity">
+    <h2><i class="fa-solid fa-calculator"></i> Специфічність — Обчислення</h2>
+    <p class="section-intro">
+      Специфічність визначається за чотирма розрядами: <strong>Inline / ID / Class / Element</strong>.
+      Чим вищий розряд — тим більше балів.
+    </p>
+
+    <!-- Таблиця розрядів -->
+    <div class="specificity-legend">
+      <div class="sl-item sl-inline">
+        <div class="sl-score">1000</div>
+        <div class="sl-name">Inline style</div>
+        <div class="sl-example"><code>style="..."</code></div>
+      </div>
+      <div class="sl-item sl-id">
+        <div class="sl-score">0100</div>
+        <div class="sl-name">ID-селектор</div>
+        <div class="sl-example"><code>#id</code></div>
+      </div>
+      <div class="sl-item sl-class">
+        <div class="sl-score">0010</div>
+        <div class="sl-name">Клас / атрибут / псевдоклас</div>
+        <div class="sl-example"><code>.class / [attr] / :hover</code></div>
+      </div>
+      <div class="sl-item sl-element">
+        <div class="sl-score">0001</div>
+        <div class="sl-name">Тег / псевдоелемент</div>
+        <div class="sl-example"><code>h1 / ::before</code></div>
+      </div>
+    </div>
+
+    <!-- Таблиця прикладів -->
+    <h3>Таблиця прикладів специфічності</h3>
+    <div class="table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Селектор</th>
+            <th title="Inline style">Inline<br><small>×1000</small></th>
+            <th title="ID selectors">ID<br><small>×100</small></th>
+            <th title="Class/attr/pseudo-class">Клас<br><small>×10</small></th>
+            <th title="Element/pseudo-element">Тег<br><small>×1</small></th>
+            <th>Специфічність</th>
+            <th>Пояснення</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>h1</code></td>
+            <td>0</td><td>0</td><td>0</td><td>1</td>
+            <td><span class="spec-badge spec-low">0001</span></td>
+            <td>1 тег</td>
+          </tr>
+          <tr>
+            <td><code>p::first-line</code></td>
+            <td>0</td><td>0</td><td>0</td><td>2</td>
+            <td><span class="spec-badge spec-low">0002</span></td>
+            <td>1 тег + 1 псевдоелемент</td>
+          </tr>
+          <tr>
+            <td><code>h1 + p::first-letter</code></td>
+            <td>0</td><td>0</td><td>0</td><td>3</td>
+            <td><span class="spec-badge spec-low">0003</span></td>
+            <td>2 теги + 1 псевдоелемент</td>
+          </tr>
+          <tr>
+            <td><code>.card</code></td>
+            <td>0</td><td>0</td><td>1</td><td>0</td>
+            <td><span class="spec-badge spec-mid">0010</span></td>
+            <td>1 клас</td>
+          </tr>
+          <tr>
+            <td><code>.card p</code></td>
+            <td>0</td><td>0</td><td>1</td><td>1</td>
+            <td><span class="spec-badge spec-mid">0011</span></td>
+            <td>1 клас + 1 тег</td>
+          </tr>
+          <tr>
+            <td><code>.card .description</code></td>
+            <td>0</td><td>0</td><td>2</td><td>0</td>
+            <td><span class="spec-badge spec-mid">0020</span></td>
+            <td>2 класи</td>
+          </tr>
+          <tr>
+            <td><code>a:hover</code></td>
+            <td>0</td><td>0</td><td>1</td><td>1</td>
+            <td><span class="spec-badge spec-mid">0011</span></td>
+            <td>1 тег + 1 псевдоклас</td>
+          </tr>
+          <tr>
+            <td><code>li > a[href*="en"] > .warn</code></td>
+            <td>0</td><td>0</td><td>2</td><td>2</td>
+            <td><span class="spec-badge spec-mid">0022</span></td>
+            <td>2 теги + 1 атрибут + 1 клас</td>
+          </tr>
+          <tr>
+            <td><code>#main-product .description</code></td>
+            <td>0</td><td>1</td><td>1</td><td>0</td>
+            <td><span class="spec-badge spec-high">0110</span></td>
+            <td>1 ID + 1 клас</td>
+          </tr>
+          <tr>
+            <td><code>#id</code></td>
+            <td>0</td><td>1</td><td>0</td><td>0</td>
+            <td><span class="spec-badge spec-high">0100</span></td>
+            <td>1 ID-селектор</td>
+          </tr>
+          <tr>
+            <td><code>style="color:red"</code></td>
+            <td>1</td><td>0</td><td>0</td><td>0</td>
+            <td><span class="spec-badge spec-inline">1000</span></td>
+            <td>Вбудований стиль</td>
+          </tr>
+          <tr class="tr-highlight">
+            <td><code>.products .card.featured > h3</code></td>
+            <td>0</td><td>0</td><td>3</td><td>1</td>
+            <td><span class="spec-badge spec-high">0031</span></td>
+            <td>3 класи + 1 тег</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Інтерактивний калькулятор специфічності -->
+    <h3>Калькулятор специфічності</h3>
+    <div class="calc-block">
+      <div class="calc-input-wrap">
+        <input type="text" id="selectorInput"
+               placeholder="Введіть CSS-селектор, напр.: .card #id p:hover"
+               class="calc-input">
+        <button onclick="calcSpecificity()" class="calc-btn">
+          <i class="fa-solid fa-equals"></i> Обчислити
+        </button>
+      </div>
+      <div class="calc-result" id="calcResult">
+        <div class="calc-tiles">
+          <div class="calc-tile calc-tile-inline">
+            <div class="ct-score" id="ctInline">0</div>
+            <div class="ct-name">Inline</div>
+          </div>
+          <div class="calc-tile calc-tile-id">
+            <div class="ct-score" id="ctId">0</div>
+            <div class="ct-name">ID</div>
+          </div>
+          <div class="calc-tile calc-tile-class">
+            <div class="ct-score" id="ctClass">0</div>
+            <div class="ct-name">Клас</div>
+          </div>
+          <div class="calc-tile calc-tile-el">
+            <div class="ct-score" id="ctEl">0</div>
+            <div class="ct-name">Тег</div>
+          </div>
+        </div>
+        <div class="calc-total" id="calcTotal">= <strong>0000</strong></div>
+        <div class="calc-explanation" id="calcExpl"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 3: СПАДКУВАННЯ
+  ========================================================= -->
+  <section id="inheritance">
+    <h2><i class="fa-solid fa-sitemap"></i> Спадкування — inherit, initial, unset, all</h2>
+    <p class="section-intro">
+      Деякі властивості CSS (<code>color</code>, <code>font-family</code>) успадковуються дочірніми елементами.
+      Інші (<code>width</code>, <code>border</code>, <code>margin</code>) — ні.
+      Керувати спадкуванням дозволяють ключові слова.
+    </p>
+
+    <div class="inherit-grid">
+
+      <!-- inherit -->
+      <div class="inherit-card">
+        <div class="icard-title"><code>inherit</code></div>
+        <div class="icard-body inherit-demo">
+          <p>Батько: <span class="color-red">червоний колір</span></p>
+          <p class="child-inherit">Дитина: inherit — успадковує червоний батька</p>
+        </div>
+        <div class="icard-code">
+          <pre><code>.parent { color: red; }
+.child-inherit {
+  color: inherit; /* = red */
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- initial -->
+      <div class="inherit-card">
+        <div class="icard-title"><code>initial</code></div>
+        <div class="icard-body initial-demo">
+          <p class="parent-blue">Батько: синій колір</p>
+          <p class="child-initial">Дитина: initial — скидає до браузерного за замовч.</p>
+        </div>
+        <div class="icard-code">
+          <pre><code>.parent-blue { color: blue; }
+.child-initial {
+  color: initial; /* = black */
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- unset -->
+      <div class="inherit-card">
+        <div class="icard-title"><code>unset</code></div>
+        <div class="icard-body unset-demo">
+          <p>
+            <span class="unset-border">border: 2px solid red</span>
+            <span class="unset-border-unset">border: unset → прибирає</span>
+          </p>
+          <p class="color-purple">
+            Колір батька фіолетовий
+            <span class="unset-color">color: unset → успадковує фіолетовий</span>
+          </p>
+        </div>
+        <div class="icard-code">
+          <pre><code>/* Ненаслідувана властивість: */
+.unset-border { border: unset; }
+/* Наслідувана властивість: */
+.unset-color  { color: unset; }</code></pre>
+        </div>
+      </div>
+
+      <!-- all: unset -->
+      <div class="inherit-card">
+        <div class="icard-title"><code>all: unset</code></div>
+        <div class="icard-body">
+          <blockquote class="bq-styled">
+            Стилізований blockquote (orange + blue border)
+          </blockquote>
+          <blockquote class="bq-unset">
+            blockquote з <code>all: unset</code> — всі стилі скинуто
+          </blockquote>
+        </div>
+        <div class="icard-code">
+          <pre><code>blockquote {
+  background: orange;
+  border: 2px solid blue;
+}
+.bq-unset {
+  all: unset; /* скидає все */
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Таблиця: успадковується чи ні -->
+    <h3>Які властивості успадковуються?</h3>
+    <div class="inherit-table-wrap">
+      <div class="inherit-col inherit-yes">
+        <div class="it-title"><i class="fa-solid fa-check"></i> Успадковуються</div>
+        <ul>
+          <li><code>color</code></li>
+          <li><code>font-family</code></li>
+          <li><code>font-size</code></li>
+          <li><code>font-weight</code></li>
+          <li><code>font-style</code></li>
+          <li><code>line-height</code></li>
+          <li><code>text-align</code></li>
+          <li><code>text-transform</code></li>
+          <li><code>letter-spacing</code></li>
+          <li><code>visibility</code></li>
+          <li><code>cursor</code></li>
+          <li><code>list-style</code></li>
+        </ul>
+      </div>
+      <div class="inherit-col inherit-no">
+        <div class="it-title"><i class="fa-solid fa-xmark"></i> НЕ успадковуються</div>
+        <ul>
+          <li><code>width / height</code></li>
+          <li><code>margin / padding</code></li>
+          <li><code>border</code></li>
+          <li><code>background</code></li>
+          <li><code>display</code></li>
+          <li><code>position</code></li>
+          <li><code>top / left / right / bottom</code></li>
+          <li><code>float</code></li>
+          <li><code>overflow</code></li>
+          <li><code>z-index</code></li>
+          <li><code>box-shadow</code></li>
+          <li><code>transform</code></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 4: КОНФЛІКТ СТИЛІВ (завдання з методички)
+  ========================================================= -->
+  <section id="conflict">
+    <h2><i class="fa-solid fa-code-compare"></i> Конфлікт стилів — Задача з методички</h2>
+    <p class="section-intro">
+      Три правила конкурують за колір тексту в <code>&lt;p class="description"&gt;</code>
+      всередині <code>&lt;div class="card" id="main-product"&gt;</code>.
+    </p>
+
+    <div class="conflict-layout">
+
+      <!-- Код -->
+      <div class="conflict-code">
+        <div class="code-block-title">HTML:</div>
+        <pre><code>&lt;div class="card" id="main-product"&gt;
+  &lt;p class="description"&gt;Текст&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <div class="code-block-title" style="margin-top:14px;">CSS (три правила):</div>
+        <pre><code>/* Специфічність: 0011 */
+.card p {
+  color: blue;
+}
+
+/* Специфічність: 0020 */
+.card .description {
+  color: green;
+}
+
+/* Специфічність: 0110 — ПЕРЕМОЖЕЦЬ */
+#main-product .description {
+  color: red;
+}
+</code></pre>
+      </div>
+
+      <!-- Аналіз -->
+      <div class="conflict-analysis">
+        <h3>Обчислення специфічності</h3>
+
+        <div class="spec-compare">
+          <div class="sc-item sc-blue">
+            <div class="sc-selector"><code>.card p</code></div>
+            <div class="sc-breakdown">
+              <span class="sc-part sc-part-cl">Клас ×1 = 10</span>
+              <span class="sc-plus">+</span>
+              <span class="sc-part sc-part-el">Тег ×1 = 1</span>
+            </div>
+            <div class="sc-total">= <strong>0011</strong></div>
+            <div class="sc-color-demo sc-col-blue">color: blue</div>
+          </div>
+
+          <div class="sc-item sc-green">
+            <div class="sc-selector"><code>.card .description</code></div>
+            <div class="sc-breakdown">
+              <span class="sc-part sc-part-cl">Клас ×2 = 20</span>
+            </div>
+            <div class="sc-total">= <strong>0020</strong></div>
+            <div class="sc-color-demo sc-col-green">color: green</div>
+          </div>
+
+          <div class="sc-item sc-red sc-winner">
+            <div class="sc-winner-badge"><i class="fa-solid fa-trophy"></i> Переможець</div>
+            <div class="sc-selector"><code>#main-product .description</code></div>
+            <div class="sc-breakdown">
+              <span class="sc-part sc-part-id">ID ×1 = 100</span>
+              <span class="sc-plus">+</span>
+              <span class="sc-part sc-part-cl">Клас ×1 = 10</span>
+            </div>
+            <div class="sc-total">= <strong>0110</strong></div>
+            <div class="sc-color-demo sc-col-red">color: red</div>
+          </div>
+        </div>
+
+        <!-- Живий приклад -->
+        <h3>Живий приклад:</h3>
+        <div class="card" id="main-product">
+          <p class="description">
+            Цей текст — червоний, тому що
+            <strong>#main-product .description</strong> (0110)
+            перемагає .card .description (0020) та .card p (0011).
+          </p>
+        </div>
+
+        <!-- Зміна БЕЗ !important -->
+        <h3>Змінити результат БЕЗ <code>!important</code></h3>
+        <p>Щоб зробити текст зеленим — підвищуємо специфічність зеленого правила:</p>
+        <pre><code>/* Спосіб 1: додати ID у селектор (.card → #main-product) */
+#main-product.card .description {
+  color: green; /* специфічність: 0120 */
+}
+
+/* Спосіб 2: додати ще один клас */
+.card .description.text-content {
+  color: green; /* специфічність: 0030 */
+}
+
+/* Спосіб 3: додати батьківський ID до зеленого */
+#main-product .card .description {
+  color: green; /* специфічність: 0120 */
+}</code></pre>
+
+        <div class="card" id="main-product-fixed">
+          <p class="description text-content">
+            Цей текст — зелений завдяки підвищеній специфічності
+            <strong>#main-product.card .description</strong> (0120) — без !important.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 5: CSS ЗМІННІ
+  ========================================================= -->
+  <section id="variables">
+    <h2><i class="fa-solid fa-droplet"></i> CSS Змінні — <code>var()</code></h2>
+    <p class="section-intro">
+      CSS-змінні (custom properties) оголошуються через <code>--назва: значення</code>
+      у <code>:root</code> (глобально) або в будь-якому селекторі (локально).
+      Використовуються через <code>var(--назва, fallback)</code>.
+    </p>
+
+    <!-- Оголошення змінних з методички -->
+    <div class="vars-declared">
+      <div class="code-block-title">Глобальні змінні у <code>:root</code> (з методички):</div>
+      <pre><code>:root {
+  --main-color:   #2563eb;   /* основний синій */
+  --accent-color: #f59e0b;   /* акцентний жовтий */
+  --text-color:   #333;      /* колір тексту */
+  --font-main:    'PT Sans', sans-serif;
+
+  /* Додаткові змінні в цій роботі: */
+  --bg-color:        #f8edeb;
+  --card-bg:         #ffffff;
+  --border-radius:   10px;
+  --spacing-md:      16px;
+  --transition:      0.25s ease;
+}</code></pre>
+    </div>
+
+    <!-- Демо var() -->
+    <h3>Демонстрація <code>var()</code></h3>
+    <div class="vars-demo-grid">
+
+      <div class="vd-card">
+        <div class="vd-label">body — шрифт та колір</div>
+        <pre><code>body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+}</code></pre>
+        <p class="vd-result" style="font-family: var(--font-main); color: var(--text-color);">
+          Текст шрифтом PT Sans, колір з --text-color
+        </p>
+      </div>
+
+      <div class="vd-card">
+        <div class="vd-label">h1 — колір заголовку</div>
+        <pre><code>h1 {
+  color: var(--main-color);
+}</code></pre>
+        <p class="vd-h1-demo">Заголовок кольору --main-color</p>
+      </div>
+
+      <div class="vd-card">
+        <div class="vd-label">button — фон та hover</div>
+        <pre><code>button {
+  background: var(--main-color);
+}
+button:hover {
+  background: var(--accent-color);
+}</code></pre>
+        <button class="vd-btn">Кнопка (наведи)</button>
+      </div>
+
+      <div class="vd-card">
+        <div class="vd-label">var() з fallback-значенням</div>
+        <pre><code>/* fallback, якщо змінна не задана */
+color: var(--unknown-color, gray);
+
+border: 2px solid
+  var(--border-color, #c9184a);</code></pre>
+        <p style="color: var(--unknown-color, gray);">
+          Цей текст сірий (fallback)
+        </p>
+        <div style="border: 2px solid var(--border-color, #c9184a); padding: 8px; border-radius: 6px; font-size:0.88rem;">
+          Рамка через var з fallback
+        </div>
+      </div>
+
+      <div class="vd-card">
+        <div class="vd-label">Локальна змінна в компоненті</div>
+        <pre><code>.alert {
+  --alert-clr: #e63946;
+  color: var(--alert-clr);
+  border-color: var(--alert-clr);
+}</code></pre>
+        <div class="vd-alert">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          Локальна --alert-clr перекриває глобальну
+        </div>
+      </div>
+
+      <div class="vd-card">
+        <div class="vd-label">Математика з calc() + var()</div>
+        <pre><code>:root { --base: 16px; }
+
+h2 { font-size: calc(var(--base) * 1.5); }
+h1 { font-size: calc(var(--base) * 2.5); }
+.small { font-size: calc(var(--base) * 0.75); }</code></pre>
+        <p style="font-size: calc(var(--base-size, 16px) * 1.5); font-weight:700; color: var(--main-color);">
+          h2: calc(16px × 1.5) = 24px
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Де оголошуються змінні -->
+    <h3>Область видимості змінних</h3>
+    <div class="scope-demo">
+      <div class="scope-global">
+        <div class="scope-label"><code>:root { --color: blue; }</code> — глобальна</div>
+        <div class="scope-child-a">
+          <code>.block-a</code> — бачить глобальну синю
+        </div>
+        <div class="scope-child-b">
+          <div class="scope-label-local"><code>.block-b { --color: red; }</code> — локальна</div>
+          <div class="scope-inner">Всередині .block-b — червона (перекрита локальною)</div>
+          <div class="scope-inner">Ще один нащадок .block-b — теж червона</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 6: ТЕМА — СВІТЛА / ТЕМНА
+  ========================================================= -->
+  <section id="theme">
+    <h2><i class="fa-solid fa-circle-half-stroke"></i> Світла / Темна тема через CSS-змінні</h2>
+    <p class="section-intro">
+      Перемикання теми — лише змінюємо значення змінних у <code>[data-theme="dark"]</code>.
+      Жодного дублювання стилів компонентів не потрібно.
+      Натисніть кнопку у навбарі: <strong>«Темна»</strong>.
+    </p>
+
+    <div class="theme-code-grid">
+      <div>
+        <div class="code-block-title">Змінні для тем:</div>
+        <pre><code>/* Світла тема (за замовч.) */
+:root, [data-theme="light"] {
+  --bg:         #f8edeb;
+  --surface:    #ffffff;
+  --on-surface: #2d2d2d;
+  --primary:    #c9184a;
+  --border:     #ffb3c1;
+  --muted:      #666;
+}
+
+/* Темна тема */
+[data-theme="dark"] {
+  --bg:         #1a1a2e;
+  --surface:    #16213e;
+  --on-surface: #e0e0e0;
+  --primary:    #ff4d6d;
+  --border:     #4a3f5c;
+  --muted:      #aaa;
+}</code></pre>
+      </div>
+      <div>
+        <div class="code-block-title">Перемикання у JavaScript:</div>
+        <pre><code>function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute(
+    'data-theme',
+    current === 'dark' ? 'light' : 'dark'
+  );
+}</code></pre>
+        <div class="code-block-title" style="margin-top:14px;">Компоненти використовують змінні:</div>
+        <pre><code>body {
+  background: var(--bg);
+  color: var(--on-surface);
+}
+section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+/* Стилі НЕ змінюються —
+   тільки значення змінних! */</code></pre>
+      </div>
+    </div>
+
+    <!-- Демо-компоненти для перегляду теми -->
+    <h3>Демо-компоненти (змінюйте тему кнопкою вгорі):</h3>
+    <div class="theme-preview">
+      <div class="tp-card-demo">
+        <h4>Картка компонента</h4>
+        <p>Всі кольори цієї картки задані через CSS-змінні. При зміні теми — змінюються тільки значення змінних.</p>
+        <button class="tp-btn">Дія</button>
+      </div>
+      <div class="tp-card-demo">
+        <h4>Форма</h4>
+        <input type="text" class="tp-input" placeholder="Введіть текст...">
+        <input type="email" class="tp-input" placeholder="Email...">
+        <button class="tp-btn tp-btn-outline">Відправити</button>
+      </div>
+      <div class="tp-card-demo">
+        <h4>Список</h4>
+        <ul class="tp-list">
+          <li><i class="fa-solid fa-check"></i> Перший пункт</li>
+          <li><i class="fa-solid fa-check"></i> Другий пункт</li>
+          <li><i class="fa-solid fa-check"></i> Третій пункт</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 7: НАБІР СТИЛІВ — КАРТКИ ТОВАРІВ (завдання з методички)
+  ========================================================= -->
+  <section id="cards">
+    <h2><i class="fa-solid fa-store"></i> Набір стилів — Картки товарів з CSS-змінними</h2>
+    <p class="section-intro">
+      Картки побудовані повністю на CSS-змінних. Зміна однієї змінної
+      <code>--main-color</code> одночасно оновлює рамку, заголовок і кнопку.
+    </p>
+
+    <div class="code-block-title">CSS для карток (точно з методички + змінні):</div>
+    <pre><code>.card {
+  border: 2px solid var(--main-color);
+  padding: 16px;
+  border-radius: 10px;
+}
+.card h3 {
+  color: var(--main-color);
+}
+.card button {
+  background: var(--main-color);
+  color: white;
+}
+.card button:hover {
+  background: var(--accent-color);
+}</code></pre>
+
+    <!-- Картки з різними кольоровими схемами через локальні змінні -->
+    <div class="product-grid">
+
+      <!-- Картка 1: базова -->
+      <div class="card">
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/laptop/300/180" alt="Ноутбук">
+        </div>
+        <h3>Ноутбук UltraBook 15</h3>
+        <p class="description">
+          Intel Core i7, 16 GB RAM, 512 GB SSD.
+          Ідеальний для розробки та дизайну.
+        </p>
+        <div class="card-meta">
+          <span class="card-price">28 999 грн</span>
+          <span class="card-rating">
+            <i class="fa-solid fa-star"></i> 4.8
+          </span>
+        </div>
+        <button>Купити</button>
+      </div>
+
+      <!-- Картка 2: featured — локальна змінна перекриває глобальну -->
+      <div class="card card-featured">
+        <div class="card-badge-featured">★ Рекомендовано</div>
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/phone2/300/180" alt="Смартфон">
+        </div>
+        <h3>Смартфон Pixel 8 Pro</h3>
+        <p class="description">
+          Google Tensor G3, 12 GB RAM, камера 50 МП.
+          Найкращий Android на ринку.
+        </p>
+        <div class="card-meta">
+          <span class="card-price">41 990 грн</span>
+          <span class="card-rating">
+            <i class="fa-solid fa-star"></i> 4.9
+          </span>
+        </div>
+        <button>Купити</button>
+      </div>
+
+      <!-- Картка 3: success theme -->
+      <div class="card card-success">
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/headphones2/300/180" alt="Навушники">
+        </div>
+        <h3>Навушники Sony WH-1000XM5</h3>
+        <p class="description">
+          ANC, 30 год автономності, Hi-Res Audio.
+          Преміум звук у будь-якому місці.
+        </p>
+        <div class="card-meta">
+          <span class="card-price">12 500 грн</span>
+          <span class="card-rating">
+            <i class="fa-solid fa-star"></i> 4.7
+          </span>
+        </div>
+        <button>Купити</button>
+      </div>
+
+      <!-- Картка 4: warning theme -->
+      <div class="card card-warning">
+        <div class="card-badge-sale">-30%</div>
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/tablet2/300/180" alt="Планшет">
+        </div>
+        <h3>Планшет Samsung Tab S9</h3>
+        <p class="description">
+          Snapdragon 8 Gen 2, 11" AMOLED, S Pen у комплекті.
+          Продуктивність рівня ноутбука.
+        </p>
+        <div class="card-meta">
+          <span class="card-price">21 700 грн</span>
+          <span class="card-price-old">31 000 грн</span>
+        </div>
+        <button>Купити</button>
+      </div>
+
+      <!-- Картка 5: недоступна (disabled theme) -->
+      <div class="card card-disabled">
+        <div class="card-badge-out">Немає в наявності</div>
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/camera/300/180" alt="Камера">
+        </div>
+        <h3>Камера Sony A7 IV</h3>
+        <p class="description">
+          33 МП, 4K60, IBIS, Eye AF.
+          Найкращий вибір для фотографів.
+        </p>
+        <div class="card-meta">
+          <span class="card-price">109 999 грн</span>
+        </div>
+        <button disabled>Немає в наявності</button>
+      </div>
+
+    </div>
+
+    <!-- Демо: зміна теми карток через JS -->
+    <h3>Зміна кольорової схеми через CSS-змінну</h3>
+    <p>Вибери колір — усі картки зміняться одночасно (змінюємо лише <code>--main-color</code>):</p>
+    <div class="color-switcher">
+      <button class="cs-btn" style="--btn-clr:#c9184a;" onclick="setCardColor('#c9184a','#ff4d6d')" title="Малиновий">
+        <i class="fa-solid fa-palette"></i>
+      </button>
+      <button class="cs-btn" style="--btn-clr:#2563eb;" onclick="setCardColor('#2563eb','#f59e0b')" title="Синій">
+        <i class="fa-solid fa-palette"></i>
+      </button>
+      <button class="cs-btn" style="--btn-clr:#16a34a;" onclick="setCardColor('#16a34a','#fbbf24')" title="Зелений">
+        <i class="fa-solid fa-palette"></i>
+      </button>
+      <button class="cs-btn" style="--btn-clr:#7c3aed;" onclick="setCardColor('#7c3aed','#f59e0b')" title="Фіолетовий">
+        <i class="fa-solid fa-palette"></i>
+      </button>
+      <button class="cs-btn" style="--btn-clr:#0891b2;" onclick="setCardColor('#0891b2','#f97316')" title="Блакитний">
+        <i class="fa-solid fa-palette"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       СЕКЦІЯ 8: КОНТРОЛЬНІ ПИТАННЯ
+  ========================================================= -->
+  <section id="answers">
+    <h2><i class="fa-solid fa-question-circle"></i> Відповіді на контрольні питання</h2>
+
+    <div class="qa-list">
+
+      <details class="qa-item">
+        <summary>1. Що таке каскад стилів?</summary>
+        <div class="qa-answer">
+          Каскад — це алгоритм, за яким браузер визначає, яке CSS-правило застосувати до елемента, коли кілька правил конкурують.
+          Враховуються три фактори (за зростанням пріоритету): <strong>порядок слідування → специфічність → важливість (<code>!important</code>)</strong>.
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>2. Що впливає на вибір стилю?</summary>
+        <div class="qa-answer">
+          <ol>
+            <li><strong>Важливість</strong> — <code>!important</code> перебиває все</li>
+            <li><strong>Специфічність</strong> — чим конкретніший селектор, тим він сильніший</li>
+            <li><strong>Порядок слідування</strong> — при рівній специфічності перемагає останнє правило</li>
+            <li><strong>Джерело стилів</strong> — inline > internal > external > browser default</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>3. Що таке специфічність?</summary>
+        <div class="qa-answer">
+          Специфічність — це числова вага CSS-селектора, яка визначає його пріоритет при конфлікті.
+          Чим конкретніший (точніший) селектор, тим вища його специфічність.
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>4. Як обчислюється специфічність?</summary>
+        <div class="qa-answer">
+          За чотирма розрядами <strong>Inline–ID–Class–Tag</strong>:
+          <ul>
+            <li><code>style=""</code> → 1000</li>
+            <li><code>#id</code> → +100 за кожен</li>
+            <li><code>.class</code>, <code>[attr]</code>, <code>:hover</code> → +10 за кожен</li>
+            <li><code>div</code>, <code>::before</code> → +1 за кожен</li>
+            <li><code>*</code>, <code>+</code>, <code>&gt;</code>, <code>~</code>, <code>:not()</code> → 0</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>5. Який селектор сильніший: <code>.card p</code> чи <code>#main p</code>?</summary>
+        <div class="qa-answer">
+          <strong><code>#main p</code></strong> сильніший — його специфічність <code>0101</code> (ID=100 + тег=1),
+          тоді як <code>.card p</code> має <code>0011</code> (клас=10 + тег=1).
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>6. Чому не рекомендується використовувати <code>!important</code>?</summary>
+        <div class="qa-answer">
+          <ul>
+            <li>Порушує природний каскад і робить код важко дебагованим</li>
+            <li>Щоб перебити <code>!important</code>, потрібен ще один <code>!important</code> з вищою специфічністю</li>
+            <li>Призводить до «гонки специфічностей» у великих проєктах</li>
+            <li>Краща альтернатива — підвищити специфічність селектора</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>7. Що таке CSS змінні?</summary>
+        <div class="qa-answer">
+          CSS Custom Properties (змінні) — це іменовані значення, що визначаються розробником і
+          перевикористовуються в CSS через функцію <code>var()</code>. Оголошуються через подвійне тире: <code>--назва: значення</code>.
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>8. Де оголошуються глобальні змінні?</summary>
+        <div class="qa-answer">
+          У псевдокласі <code>:root</code> — він відповідає кореневому елементу <code>&lt;html&gt;</code>
+          і має найвищу специфічність серед усіх селекторів-елементів.
+          Змінні, оголошені в <code>:root</code>, доступні у всьому документі.
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>9. Як використовувати <code>var()</code>?</summary>
+        <div class="qa-answer">
+          <code>var(--назва-змінної)</code> — просте використання.<br>
+          <code>var(--назва-змінної, fallback)</code> — із запасним значенням, якщо змінна не визначена.<br>
+          Приклад: <code>color: var(--primary-color, #333);</code>
+        </div>
+      </details>
+
+      <details class="qa-item">
+        <summary>10. Які переваги змінних CSS?</summary>
+        <div class="qa-answer">
+          <ul>
+            <li>Централізоване управління кольорами, шрифтами, відступами</li>
+            <li>Легке перемикання тем (light/dark) без дублювання правил</li>
+            <li>Змінюються динамічно через JavaScript (<code>element.style.setProperty()</code>)</li>
+            <li>Підтримка спадкування та локальних перевизначень</li>
+            <li>Покращують читабельність та підтримку коду</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h3><i class="fa-solid fa-user-graduate"></i> Розробник</h3>
+      <p><strong>Богдан Барулін</strong></p>
+      <p>Група КН-22</p>
+      <p>Лабораторна робота №6</p>
+    </div>
+    <div class="footer-col">
+      <h3><i class="fa-solid fa-address-book"></i> Контакти</h3>
+      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:barulin@example.com">barulin@example.com</a></p>
+      <p><i class="fa-solid fa-phone"></i> <a href="tel:+380994366960">+38 099 436 69 60</a></p>
+    </div>
+    <div class="footer-col">
+      <h3><i class="fa-solid fa-book-open"></i> Ресурси</h3>
+      <p><a href="https://developer.mozilla.org/uk/docs/Web/CSS/Specificity" target="_blank">MDN: Специфічність</a></p>
+      <p><a href="https://developer.mozilla.org/uk/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">MDN: CSS змінні</a></p>
+      <p><a href="https://specificity.keegan.st/" target="_blank">Specificity Calculator</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Богдан Барулін &mdash; КН-22. Лабораторна робота №6: Каскад, специфічність, змінні.</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================
+   ПЕРЕМИКАННЯ ТЕМИ
+===================================================== */
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+
+  const icon  = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if (next === 'dark') {
+    icon.className  = 'fa-solid fa-sun';
+    label.textContent = 'Світла';
+  } else {
+    icon.className  = 'fa-solid fa-moon';
+    label.textContent = 'Темна';
+  }
+}
+
+/* =====================================================
+   ЗМІНА КОЛЬОРУ КАРТОК
+===================================================== */
+function setCardColor(main, accent) {
+  document.documentElement.style.setProperty('--main-color', main);
+  document.documentElement.style.setProperty('--accent-color', accent);
+}
+
+/* =====================================================
+   КАЛЬКУЛЯТОР СПЕЦИФІЧНОСТІ
+===================================================== */
+function calcSpecificity() {
+  const raw = document.getElementById('selectorInput').value.trim();
+  if (!raw) return;
+
+  let sel = raw;
+  let ids = 0, classes = 0, elements = 0;
+  const parts = [];
+
+  /* видаляємо :not(), рахуємо те що всередині */
+  const notMatches = sel.matchAll(/:not\(([^)]*)\)/g);
+  for (const m of notMatches) {
+    const inner = m[1];
+    const r = countParts(inner);
+    ids     += r.ids;
+    classes += r.classes;
+    elements+= r.elements;
+    if (r.ids)      parts.push(':not() → +' + r.ids      + ' ID');
+    if (r.classes)  parts.push(':not() → +' + r.classes  + ' клас');
+    if (r.elements) parts.push(':not() → +' + r.elements + ' тег');
+  }
+  sel = sel.replace(/:not\([^)]*\)/g, '');
+
+  const r = countParts(sel);
+  ids      += r.ids;
+  classes  += r.classes;
+  elements += r.elements;
+  parts.push(...r.parts);
+
+  const total = ids * 100 + classes * 10 + elements;
+  const fmt   = String(ids).padStart(1,'0') + String(classes * 10 + elements).padStart(3,'0');
+
+  document.getElementById('ctInline').textContent = '0';
+  document.getElementById('ctId').textContent     = ids;
+  document.getElementById('ctClass').textContent  = classes;
+  document.getElementById('ctEl').textContent     = elements;
+  document.getElementById('calcTotal').innerHTML  =
+    '= <strong>' + (ids>0?ids+'':0) + (classes>0?classes:'0') + (elements>0?elements:'0')  + ' = ' + total + '</strong>';
+  document.getElementById('calcExpl').innerHTML   = parts.length
+    ? '<ul>' + parts.map(p => '<li>' + p + '</li>').join('') + '</ul>'
+    : '<em>Нічого не знайдено</em>';
+}
+
+function countParts(sel) {
+  let ids = 0, classes = 0, elements = 0;
+  const parts = [];
+
+  /* ID */
+  const idM = sel.match(/#[\w-]+/g) || [];
+  ids = idM.length;
+  idM.forEach(s => parts.push(s + ' → +100 (ID)'));
+
+  /* псевдокласи та класи та атрибути */
+  let temp = sel.replace(/#[\w-]+/g, '');
+  const clM = temp.match(/\.[\w-]+|:[\w-]+(\([^)]*\))?|\[[^\]]+\]/g) || [];
+  /* фільтруємо псевдоелементи — вони +1 */
+  const pseudoEl = ['::before','::after','::first-line','::first-letter','::selection','::placeholder','::marker'];
+  clM.forEach(s => {
+    if (s.startsWith('::') || pseudoEl.includes(s)) {
+      elements++;
+      parts.push(s + ' → +1 (псевдоелемент)');
+    } else {
+      classes++;
+      parts.push(s + ' → +10 (клас/псевдоклас/атрибут)');
+    }
+  });
+
+  /* теги — літери без # . : [ */
+  temp = temp.replace(/\.[\w-]+|:{1,2}[\w-]+(\([^)]*\))?|\[[^\]]+\]/g, '');
+  const elM = temp.match(/\b[a-zA-Z][\w-]*/g) || [];
+  elM.forEach(s => {
+    elements++;
+    parts.push('<' + s + '> → +1 (тег)');
+  });
+
+  return { ids, classes, elements, parts };
+}
+
+/* Підрахунок при Enter */
+document.getElementById('selectorInput')
+  .addEventListener('keydown', e => { if (e.key === 'Enter') calcSpecificity(); });
+</script>
+
+</body>
+</html>

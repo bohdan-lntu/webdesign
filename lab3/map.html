@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна №3 — Навігаційна карта</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f8edeb;
+      color: #333;
+    }
+    header {
+      background-color: #c9184a;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.6rem; }
+    nav {
+      background-color: #ff4d6d;
+      padding: 10px 40px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover, nav a.active { background-color: #c9184a; }
+    main { padding: 30px 40px; max-width: 1000px; margin: 0 auto; }
+    section { margin-bottom: 40px; }
+    h2 { color: #c9184a; margin-bottom: 14px; border-bottom: 2px solid #ffb3c1; padding-bottom: 6px; }
+    h3 { color: #ff4d6d; margin: 12px 0 8px; }
+
+    .map-container {
+      position: relative;
+      display: inline-block;
+      border: 3px solid #ffb3c1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .map-container img { display: block; }
+
+    .info-box {
+      background: white;
+      border: 2px solid #ffb3c1;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .info-box h3 { margin-top: 0; }
+    .areas-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .areas-list li {
+      padding: 8px 12px;
+      margin-bottom: 6px;
+      background: #fff0f3;
+      border-left: 4px solid #c9184a;
+      border-radius: 0 4px 4px 0;
+    }
+    .areas-list li a { color: #c9184a; font-weight: bold; }
+
+    /* Google Maps */
+    .maps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .map-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .map-card h3 {
+      padding: 10px 14px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    .map-card iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      display: block;
+    }
+
+    footer {
+      background-color: #c9184a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a { color: #ffb3c1; }
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 700px) {
+      .maps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Навігаційна карта</h1>
+  <span>Лабораторна робота №3</span>
+</header>
+
+<nav>
+  <a href="index.html">Головна</a>
+  <a href="map.html" class="active">Карта</a>
+  <a href="form.html">Форма</a>
+  <a href="media.html">Медіа</a>
+</nav>
+
+<main>
+
+  <!-- РОЗДІЛ 1: Навігаційна карта (image map) -->
+  <section>
+    <h2>Навігаційна карта зображення</h2>
+    <p style="margin-bottom:14px;">
+      Натисніть на одну з областей на карті України, щоб перейти до відповідної сторінки або ресурсу.
+    </p>
+
+    <div class="map-container">
+      <!-- Карта України 800x500 -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Ukraine_location_map.svg/800px-Ukraine_location_map.svg.png"
+        alt="Карта України"
+        width="800"
+        usemap="#ukraine-map"
+        style="max-width:100%; height:auto;"
+      >
+      <map name="ukraine-map">
+        <!-- Київ (центр) ~ (370, 175) -->
+        <area
+          shape="circle"
+          coords="370,175,35"
+          href="https://uk.wikipedia.org/wiki/%D0%9A%D0%B8%D1%96%D0%B2"
+          alt="Київ — столиця України"
+          title="Київ — столиця України"
+          target="_blank"
+        >
+        <!-- Львів (захід) ~ (175, 165) -->
+        <area
+          shape="circle"
+          coords="175,165,35"
+          href="https://uk.wikipedia.org/wiki/%D0%9B%D1%8C%D0%B2%D1%96%D0%B2"
+          alt="Львів"
+          title="Львів"
+          target="_blank"
+        >
+        <!-- Одеса (південь) ~ (385, 340) -->
+        <area
+          shape="circle"
+          coords="385,340,35"
+          href="https://uk.wikipedia.org/wiki/%D0%9E%D0%B4%D0%B5%D1%81%D0%B0"
+          alt="Одеса"
+          title="Одеса"
+          target="_blank"
+        >
+        <!-- Харків (схід) ~ (580, 170) -->
+        <area
+          shape="circle"
+          coords="580,170,35"
+          href="https://uk.wikipedia.org/wiki/%D0%A5%D0%B0%D1%80%D0%BA%D1%96%D0%B2"
+          alt="Харків"
+          title="Харків"
+          target="_blank"
+        >
+      </map>
+    </div>
+
+    <div class="info-box">
+      <h3>Клікабельні區зони карти:</h3>
+      <ul class="areas-list">
+        <li>
+          <a href="https://uk.wikipedia.org/wiki/Київ" target="_blank">Київ</a>
+          — столиця України, центральна частина карти
+        </li>
+        <li>
+          <a href="https://uk.wikipedia.org/wiki/Львів" target="_blank">Львів</a>
+          — місто на заході країни, культурна столиця
+        </li>
+        <li>
+          <a href="https://uk.wikipedia.org/wiki/Одеса" target="_blank">Одеса</a>
+          — портове місто на півдні, берег Чорного моря
+        </li>
+        <li>
+          <a href="https://uk.wikipedia.org/wiki/Харків" target="_blank">Харків</a>
+          — найбільше місто на сході України
+        </li>
+      </ul>
+      <p style="margin-top:10px; font-size:0.85rem; color:#888;">
+        Підказка: для виділення координат зображень можна скористатися сервісом
+        <a href="https://www.image-map.net/" target="_blank" style="color:#c9184a;">image-map.net</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 2: Google Maps -->
+  <section>
+    <h2>Google Maps — вбудовані карти</h2>
+    <p style="margin-bottom:14px;">Карти різних місць з мітками та маршрутами:</p>
+
+    <div class="maps-grid">
+
+      <!-- Карта 1: Київ, точка -->
+      <div class="map-card">
+        <h3>Київ — центр міста</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40517.70043521566!2d30.48799!3d50.45466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf37b0169648%3A0x9dee31a5c5ed0e3f!2z0JrQuNGX0LI!5e0!3m2!1suk!2sua!4v1700000001"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Карта Києва">
+        </iframe>
+      </div>
+
+      <!-- Карта 2: Львів -->
+      <div class="map-card">
+        <h3>Львів — площа Ринок</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2575.1034765000804!2d24.029998715943427!3d49.84197597940087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add7c09109a57%3A0x4223c517012378e2!2z0J_Qu9C-0YnQsCDQoNC40L3QvtC6LCDQm9GM0LLRltCy!5e0!3m2!1suk!2sua!4v1700000002"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Карта Львова">
+        </iframe>
+      </div>
+
+      <!-- Карта 3: Одеса -->
+      <div class="map-card">
+        <h3>Одеса — Потьомкінські сходи</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2749.0978975497427!2d30.742684615863406!3d46.484583879125055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c633229a8d1f5b%3A0x6f61ee98c7e32aed!2z0J_QvtGC0ZzQvNC60ZbQvdGB0YzQutGWINGB0YXQvtC00Lg!5e0!3m2!1suk!2sua!4v1700000003"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Карта Одеси">
+        </iframe>
+      </div>
+
+      <!-- Карта 4: Маршрут Київ-Львів -->
+      <div class="map-card">
+        <h3>Маршрут: Київ → Харків</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d2630065.1540766965!2d31.2!3d49.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x40d4cf37b0169648%3A0x9dee31a5c5ed0e3f!2z0JrQuNGX0LI!3m2!1d50.4501!2d30.5234!4m5!1s0x4127a09b77571ed9%3A0xbc9be8f6a3918053!2z0KXQsNGA0LrRltCy!3m2!1d49.9935!2d36.2304!5e0!3m2!1suk!2sua!4v1700000004"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Маршрут Київ-Харків">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><b>Розробник:</b> Студент групи КН-31</p>
+  <p>Email: <a href="mailto:student@example.com">student@example.com</a></p>
+  <p>Телефон: <a href="tel:+380991234567" style="color:#ffb3c1;">+38 (099) 123-45-67</a></p>
+  <p style="margin-top:8px; font-size:0.85rem;">© 2024 Лабораторна робота №3. Всі права захищені.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторна №5 — Шрифти та списки | Богдан Барулін КН-22</title>
+
+  <!--
+    ЗАВДАННЯ 3 — Google Fonts
+    Підключення через <link> тегу (рекомендований спосіб).
+    Шрифти:
+      • Playfair Display — для заголовків (serif, декоративний, ваги 400/700/900)
+      • Roboto           — для тіла (sans-serif, ваги 300/400/500/700)
+      • Dancing Script   — декоративний курсивний (демонструє "завантажений" шрифт)
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!--
+    ЗАВДАННЯ 4 — Font Awesome 6 (іконковий веб-шрифт)
+    Підключення через CDN
+  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-inner">
+    <h1>Веб-типографіка та декоративне оформлення списків</h1>
+    <p class="header-sub">Лабораторна робота №5 &mdash; Богдан Барулін, КН-22</p>
+  </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav id="main-nav">
+  <ul>
+    <li><a href="#custom-font">@font-face</a></li>
+    <li><a href="#google-fonts">Google Fonts</a></li>
+    <li><a href="#font-weights">font-weight</a></li>
+    <li><a href="#text-props">text-*</a></li>
+    <li><a href="#icons">Іконки</a></li>
+    <li><a href="#list-square">Квадрат</a></li>
+    <li><a href="#list-circle">Коло</a></li>
+    <li><a href="#list-image">Зображення</a></li>
+    <li><a href="https://fonts.google.com" target="_blank">Google Fonts</a></li>
+    <li><a href="https://fontawesome.com" target="_blank">Font Awesome</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ========== СЕКЦІЯ 1: @font-face + нестандартний шрифт ========== -->
+  <section id="custom-font">
+    <h2><i class="fa-solid fa-font"></i> @font-face — Підключення власного шрифту</h2>
+    <p class="section-intro">
+      Завантажений нестандартний шрифт <strong>Dancing Script</strong> підключено двома способами:
+      через <code>@import</code> з Google Fonts (у CSS) та продемонстровано синтаксис
+      <code>@font-face</code> для локального файлу шрифту.
+    </p>
+
+    <!-- Демонстрація @font-face синтаксису -->
+    <div class="code-demo">
+      <div class="code-demo-title">
+        <i class="fa-solid fa-code"></i> Синтаксис @font-face (для локального файлу):
+      </div>
+      <pre><code>/* Завантажити з fontsquirrel.com або fontesk.com */
+@font-face {
+    font-family: "DancingScript";
+    src: url('fonts/DancingScript-Regular.woff2') format('woff2'),
+         url('fonts/DancingScript-Regular.woff')  format('woff'),
+         url('fonts/DancingScript-Regular.ttf')   format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;  /* уникаємо FOIT */
+}</code></pre>
+    </div>
+
+    <!-- Застосування шрифту -->
+    <div class="font-showcase">
+      <p class="font-custom-normal">
+        Звичайний текст шрифтом Dancing Script (400) —
+        «Найкращий спосіб вивчити веб — це практика»
+      </p>
+      <p class="font-custom-semibold">
+        Dancing Script Semibold (600) — Веб-типографіка та CSS
+      </p>
+      <p class="font-custom-bold">
+        Dancing Script Bold (700) — Богдан Барулін, КН-22
+      </p>
+      <p class="font-custom-large">
+        Великий заголовок декоративним шрифтом
+      </p>
+    </div>
+
+    <!-- Де взяти безкоштовні шрифти -->
+    <div class="info-cards">
+      <div class="info-card">
+        <i class="fa-solid fa-globe"></i>
+        <strong>Google Fonts</strong>
+        <p>fonts.google.com — понад 1500 безкоштовних шрифтів з підтримкою кирилиці</p>
+        <a href="https://fonts.google.com" target="_blank">Відкрити →</a>
+      </div>
+      <div class="info-card">
+        <i class="fa-solid fa-download"></i>
+        <strong>Font Squirrel</strong>
+        <p>fontsquirrel.com — безкоштовні шрифти + генератор @font-face пакетів</p>
+        <a href="https://www.fontsquirrel.com" target="_blank">Відкрити →</a>
+      </div>
+      <div class="info-card">
+        <i class="fa-solid fa-star"></i>
+        <strong>Fontesk</strong>
+        <p>fontesk.com — безкоштовні дизайнерські шрифти у форматах TTF та OTF</p>
+        <a href="https://fontesk.com" target="_blank">Відкрити →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 2: Google Fonts + різні шрифти ========== -->
+  <section id="google-fonts">
+    <h2><i class="fa-brands fa-google"></i> Google Fonts — Підключення через &lt;link&gt;</h2>
+    <p class="section-intro">
+      Підключено 3 шрифти: <strong>Playfair Display</strong> (заголовки, serif),
+      <strong>Roboto</strong> (основний текст, sans-serif),
+      <strong>Dancing Script</strong> (декоративний).
+      Код підключення у <code>&lt;head&gt;</code>:
+    </p>
+
+    <div class="code-demo">
+      <div class="code-demo-title">
+        <i class="fa-solid fa-code"></i> Підключення у HTML:
+      </div>
+      <pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?
+    family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;
+    family=Roboto:wght@300;400;500;700&amp;
+    family=Dancing+Script:wght@400;700&amp;
+    display=swap" rel="stylesheet"&gt;</code></pre>
+    </div>
+
+    <div class="font-compare">
+      <div class="font-compare-item">
+        <span class="font-label">Playfair Display</span>
+        <p class="demo-playfair">
+          Веб-типографіка — мистецтво підбору шрифтів для цифрових носіїв.
+          Serif-шрифт надає тексту класичного, академічного вигляду.
+        </p>
+      </div>
+      <div class="font-compare-item">
+        <span class="font-label">Roboto</span>
+        <p class="demo-roboto">
+          Найпопулярніший шрифт Google для веб та мобільних додатків.
+          Чудово читається на екранах будь-якого розміру.
+        </p>
+      </div>
+      <div class="font-compare-item">
+        <span class="font-label">Dancing Script</span>
+        <p class="demo-dancing">
+          Декоративний рукописний шрифт для акцентів та заголовків.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 3: font-weight, line-height, font-style ========== -->
+  <section id="font-weights">
+    <h2><i class="fa-solid fa-weight-hanging"></i> font-weight, font-size, line-height</h2>
+    <p class="section-intro">
+      Демонстрація всіх значень <code>font-weight</code> (100–900),
+      різних <code>font-size</code> та <code>line-height</code>.
+    </p>
+
+    <!-- font-weight -->
+    <h3>font-weight (Roboto)</h3>
+    <div class="weight-showcase">
+      <p class="fw-300">font-weight: 300 — Light — «Веб-розробка починається з типографіки»</p>
+      <p class="fw-400">font-weight: 400 — Regular (normal) — «Веб-розробка починається з типографіки»</p>
+      <p class="fw-500">font-weight: 500 — Medium — «Веб-розробка починається з типографіки»</p>
+      <p class="fw-700">font-weight: 700 — Bold — «Веб-розробка починається з типографіки»</p>
+    </div>
+
+    <h3>font-weight (Playfair Display)</h3>
+    <div class="weight-showcase">
+      <p class="fw-playfair-400">font-weight: 400 — Regular — «Типографіка є основою дизайну»</p>
+      <p class="fw-playfair-700">font-weight: 700 — Bold — «Типографіка є основою дизайну»</p>
+      <p class="fw-playfair-900">font-weight: 900 — Black — «Типографіка є основою дизайну»</p>
+      <p class="fw-playfair-italic">font-style: italic — «Типографіка є основою дизайну»</p>
+    </div>
+
+    <!-- font-size -->
+    <h3>font-size</h3>
+    <div class="size-showcase">
+      <p class="fs-sm">font-size: 0.75rem (12px) — дрібний текст, підписи</p>
+      <p class="fs-base">font-size: 1rem (16px) — базовий текст</p>
+      <p class="fs-md">font-size: 1.25rem (20px) — великий текст</p>
+      <p class="fs-lg">font-size: 1.75rem (28px) — підзаголовок</p>
+      <p class="fs-xl">font-size: 2.5rem (40px) — заголовок</p>
+    </div>
+
+    <!-- line-height -->
+    <h3>line-height</h3>
+    <div class="lh-grid">
+      <div class="lh-card">
+        <span class="lh-label">line-height: 1</span>
+        <p class="lh-1">Тісний міжрядковий інтервал. Текст важко читати при великій кількості рядків.
+        Використовується рідко — лише для однорядкових заголовків.</p>
+      </div>
+      <div class="lh-card">
+        <span class="lh-label">line-height: 1.5</span>
+        <p class="lh-15">Стандартний міжрядковий інтервал для веб-тексту.
+        Добре читається і є рекомендованим значенням для основного тексту сторінки.</p>
+      </div>
+      <div class="lh-card">
+        <span class="lh-label">line-height: 2</span>
+        <p class="lh-2">Широкий міжрядковий інтервал. Добре підходить для
+        текстів з великим шрифтом або для статей з довгими абзацами.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 4: Властивості text-* ========== -->
+  <section id="text-props">
+    <h2><i class="fa-solid fa-text-height"></i> Властивості <code>text-*</code></h2>
+    <p class="section-intro">
+      Демонстрація: <code>text-align</code>, <code>text-transform</code>,
+      <code>text-decoration</code>, <code>text-shadow</code>,
+      <code>text-indent</code>, <code>text-overflow</code>, <code>letter-spacing</code>.
+    </p>
+
+    <div class="text-props-grid">
+
+      <div class="tp-card">
+        <div class="tp-label">text-align: left / center / right / justify</div>
+        <p class="ta-left">← Вирівнювання ліворуч (text-align: left)</p>
+        <p class="ta-center">Вирівнювання по центру (text-align: center)</p>
+        <p class="ta-right">Вирівнювання праворуч (text-align: right) →</p>
+        <p class="ta-justify">Вирівнювання по ширині (text-align: justify). Текст рівномірно розтягується від лівого до правого краю блоку, утворюючи рівні поля з обох боків.</p>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-label">text-transform</div>
+        <p class="tt-upper">text-transform: uppercase — ВЕРХНІЙ РЕГІСТР</p>
+        <p class="tt-lower">text-transform: lowercase — нижній регістр</p>
+        <p class="tt-cap">text-transform: capitalize — Кожне Слово З Великої</p>
+        <p class="tt-none">text-transform: none — без змін</p>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-label">text-decoration</div>
+        <p class="td-under">text-decoration: underline</p>
+        <p class="td-over">text-decoration: overline</p>
+        <p class="td-through">text-decoration: line-through</p>
+        <p class="td-wavy">text-decoration: underline wavy red</p>
+        <p class="td-dotted">text-decoration: underline dotted blue</p>
+        <p class="td-double">text-decoration: underline double green</p>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-label">text-shadow</div>
+        <p class="ts-simple">text-shadow: 2px 2px 4px rgba(0,0,0,0.3)</p>
+        <p class="ts-color">text-shadow: 3px 3px 0 #ff4d6d</p>
+        <p class="ts-glow">text-shadow: 0 0 10px #c9184a, 0 0 20px #ff4d6d</p>
+        <p class="ts-multi">text-shadow: 1px 1px #c9184a, -1px -1px #ff4d6d, 2px 2px 8px rgba(0,0,0,0.2)</p>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-label">text-indent / letter-spacing / word-spacing</div>
+        <p class="t-indent">text-indent: 2em — відступ першого рядка абзацу, що є традиційним для типографіки.</p>
+        <p class="t-ls">letter-spacing: 0.15em — р о з р я д к а</p>
+        <p class="t-ws">word-spacing: 1em — відстань між словами збільшена</p>
+      </div>
+
+      <div class="tp-card">
+        <div class="tp-label">text-overflow: ellipsis</div>
+        <div class="t-overflow-wrap">
+          <p class="t-overflow">Дуже довгий текст, який не вміщується в один рядок і обрізається трьома крапками (ellipsis)</p>
+        </div>
+        <p style="font-size:0.82rem; color:#888; margin-top:6px;">
+          Потребує: <code>overflow:hidden; white-space:nowrap; text-overflow:ellipsis</code>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 5: Font Awesome іконки ========== -->
+  <section id="icons">
+    <h2><i class="fa-solid fa-icons"></i> Іконкові шрифти — Font Awesome 6</h2>
+    <p class="section-intro">
+      Font Awesome підключений через CDN. Іконки задаються класами:
+      <code>fa-solid</code>, <code>fa-regular</code>, <code>fa-brands</code>.
+      Розмір та колір керується через CSS.
+    </p>
+
+    <!-- Основні іконки -->
+    <h3>Розміри іконок (fa-xs … fa-2xl)</h3>
+    <div class="icon-sizes">
+      <span><i class="fa-solid fa-star fa-xs"></i> xs</span>
+      <span><i class="fa-solid fa-star fa-sm"></i> sm</span>
+      <span><i class="fa-solid fa-star"></i> base</span>
+      <span><i class="fa-solid fa-star fa-lg"></i> lg</span>
+      <span><i class="fa-solid fa-star fa-xl"></i> xl</span>
+      <span><i class="fa-solid fa-star fa-2xl"></i> 2xl</span>
+    </div>
+
+    <!-- Блоки з іконками -->
+    <h3>Тематичні блоки з іконками</h3>
+    <div class="icon-grid">
+
+      <div class="icon-card icon-card--web">
+        <i class="fa-solid fa-code"></i>
+        <h4>Веб-розробка</h4>
+        <p>HTML, CSS та JavaScript — тріада фронтенд-розробника</p>
+      </div>
+
+      <div class="icon-card icon-card--data">
+        <i class="fa-solid fa-database"></i>
+        <h4>Бази даних</h4>
+        <p>SQL, NoSQL, реляційні та документоорієнтовані СУБД</p>
+      </div>
+
+      <div class="icon-card icon-card--security">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h4>Кібербезпека</h4>
+        <p>Захист даних, шифрування, аутентифікація</p>
+      </div>
+
+      <div class="icon-card icon-card--mobile">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h4>Мобільний UI</h4>
+        <p>Adaptive та Responsive дизайн для смартфонів</p>
+      </div>
+
+      <div class="icon-card icon-card--cloud">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <h4>Хмарні сервіси</h4>
+        <p>AWS, Google Cloud, Azure — розгортання проєктів</p>
+      </div>
+
+      <div class="icon-card icon-card--ai">
+        <i class="fa-solid fa-robot"></i>
+        <h4>Штучний інтелект</h4>
+        <p>ML, нейронні мережі, обробка природної мови</p>
+      </div>
+
+    </div>
+
+    <!-- Брендові іконки -->
+    <h3>Брендові іконки (<code>fa-brands</code>)</h3>
+    <div class="brand-icons">
+      <span class="brand-icon brand-html"><i class="fa-brands fa-html5"></i> HTML5</span>
+      <span class="brand-icon brand-css"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+      <span class="brand-icon brand-js"><i class="fa-brands fa-js"></i> JavaScript</span>
+      <span class="brand-icon brand-react"><i class="fa-brands fa-react"></i> React</span>
+      <span class="brand-icon brand-node"><i class="fa-brands fa-node-js"></i> Node.js</span>
+      <span class="brand-icon brand-git"><i class="fa-brands fa-git-alt"></i> Git</span>
+      <span class="brand-icon brand-github"><i class="fa-brands fa-github"></i> GitHub</span>
+      <span class="brand-icon brand-python"><i class="fa-brands fa-python"></i> Python</span>
+    </div>
+
+    <!-- Анімовані іконки -->
+    <h3>Анімовані іконки (CSS-класи)</h3>
+    <div class="anim-icons">
+      <span><i class="fa-solid fa-spinner fa-spin"></i> fa-spin</span>
+      <span><i class="fa-solid fa-circle-notch fa-spin"></i> fa-spin</span>
+      <span><i class="fa-solid fa-sync fa-spin"></i> fa-spin</span>
+      <span><i class="fa-solid fa-heart fa-beat"></i> fa-beat</span>
+      <span><i class="fa-solid fa-bell fa-shake"></i> fa-shake</span>
+      <span><i class="fa-solid fa-arrow-up fa-bounce"></i> fa-bounce</span>
+    </div>
+
+    <!-- Іконки у кнопках -->
+    <h3>Іконки у кнопках</h3>
+    <div class="icon-buttons">
+      <button class="ibtn ibtn-primary"><i class="fa-solid fa-paper-plane"></i> Надіслати</button>
+      <button class="ibtn ibtn-success"><i class="fa-solid fa-floppy-disk"></i> Зберегти</button>
+      <button class="ibtn ibtn-warning"><i class="fa-solid fa-pen-to-square"></i> Редагувати</button>
+      <button class="ibtn ibtn-danger"><i class="fa-solid fa-trash"></i> Видалити</button>
+      <button class="ibtn ibtn-info"><i class="fa-solid fa-circle-info"></i> Деталі</button>
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 6: Список з маркером-КВАДРАТОМ ========== -->
+  <section id="list-square">
+    <h2><i class="fa-solid fa-list-ol"></i> Нумерований список з маркером у квадраті</h2>
+    <p class="section-intro">
+      Стандартні маркери замінено на номери у квадраті за допомогою
+      <code>counter-reset</code>, <code>counter-increment</code> та
+      псевдоелемента <code>::before</code>.
+    </p>
+
+    <div class="lists-compare">
+
+      <!-- Список 1: Кроки веб-проєкту -->
+      <div>
+        <h3>Кроки створення веб-проєкту</h3>
+        <ol class="list-square-num">
+          <li><a href="#">Аналіз вимог та технічне завдання</a></li>
+          <li><a href="#">Прототипування та UX-дизайн</a></li>
+          <li><a href="#">Верстка HTML та CSS-стилізація</a></li>
+          <li><a href="#">Програмування JavaScript і бекенду</a></li>
+          <li><a href="#">Тестування, оптимізація та деплой</a></li>
+        </ol>
+      </div>
+
+      <!-- Список 2: кольоровий квадрат -->
+      <div>
+        <h3>Технології фронтенду</h3>
+        <ol class="list-square-color">
+          <li>HTML5 — структура сторінки</li>
+          <li>CSS3 — стилізація та анімації</li>
+          <li>JavaScript — інтерактивність</li>
+          <li>TypeScript — типізований JS</li>
+          <li>React / Vue / Angular — фреймворки</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 7: Список з маркером-КОЛОМ ========== -->
+  <section id="list-circle">
+    <h2><i class="fa-solid fa-circle"></i> Нумерований список з маркером у колі</h2>
+    <p class="section-intro">
+      Номери у колі реалізовані через <code>counter()</code> та
+      <code>::before</code> з <code>border-radius: 50%</code>.
+    </p>
+
+    <div class="lists-compare">
+
+      <!-- Список: Правила CSS -->
+      <div>
+        <h3>Правила хорошого CSS</h3>
+        <ol class="list-circle-num">
+          <li>Використовувати зовнішній файл стилів</li>
+          <li>Дотримуватись єдиної системи іменування (BEM)</li>
+          <li>Уникати надмірної специфічності</li>
+          <li>Мінімізувати повторення коду (DRY)</li>
+          <li>Забезпечити адаптивність через медіа-запити</li>
+        </ol>
+      </div>
+
+      <!-- Список: Кольоровий варіант кола -->
+      <div>
+        <h3>Веб-формати шрифтів</h3>
+        <ol class="list-circle-color">
+          <li><strong>WOFF2</strong> — найновіший, найлегший (рекомендований)</li>
+          <li><strong>WOFF</strong> — широко підтримується всіма браузерами</li>
+          <li><strong>TTF / OTF</strong> — класичні формати, більший розмір</li>
+          <li><strong>EOT</strong> — для IE (застарілий)</li>
+          <li><strong>SVG</strong> — векторний, для старих iOS (застарілий)</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== СЕКЦІЯ 8: Список із ЗОБРАЖЕННЯМ як маркером ========== -->
+  <section id="list-image">
+    <h2><i class="fa-solid fa-image"></i> Маркований список із зображенням як маркером</h2>
+    <p class="section-intro">
+      Три варіанти: <code>list-style-image: url()</code>,
+      власний маркер через <code>::marker</code>,
+      та <code>background-image</code> з відступом через <code>padding-left</code>.
+    </p>
+
+    <div class="lists-compare">
+
+      <!-- Спосіб 1: list-style-image -->
+      <div>
+        <h3>Спосіб 1: <code>list-style-image</code></h3>
+        <ul class="list-img-style">
+          <li>Підключення шрифтів через @font-face</li>
+          <li>Google Fonts та іконкові шрифти</li>
+          <li>Font Awesome — популярний набір іконок</li>
+          <li>Властивості font-weight та font-size</li>
+          <li>Декоративне оформлення списків</li>
+        </ul>
+      </div>
+
+      <!-- Спосіб 2: background-image + padding-left -->
+      <div>
+        <h3>Спосіб 2: <code>background-image</code> + <code>padding-left</code></h3>
+        <ul class="list-bg-img">
+          <li>Адаптивний дизайн та медіа-запити</li>
+          <li>Flexbox та CSS Grid для верстки</li>
+          <li>CSS-анімації та переходи</li>
+          <li>Змінні CSS (custom properties)</li>
+          <li>Pseudo-elements ::before та ::after</li>
+        </ul>
+      </div>
+
+      <!-- Спосіб 3: ::marker -->
+      <div>
+        <h3>Спосіб 3: Стилізація <code>::marker</code></h3>
+        <ul class="list-marker-custom">
+          <li>JavaScript та DOM-маніпуляції</li>
+          <li>Робота з API та fetch-запити</li>
+          <li>LocalStorage та SessionStorage</li>
+          <li>Promises, async/await</li>
+          <li>Модульна система ES6+</li>
+        </ul>
+      </div>
+
+      <!-- Спосіб 4: emoji-маркери через ::before -->
+      <div>
+        <h3>Спосіб 4: Emoji-маркери через <code>::before</code></h3>
+        <ul class="list-emoji">
+          <li>Вивчити основи HTML та CSS</li>
+          <li>Опанувати JavaScript та фреймворки</li>
+          <li>Практикуватись на реальних проєктах</li>
+          <li>Вивчити Git та командний рядок</li>
+          <li>Поповнювати портфоліо на GitHub</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h3><i class="fa-solid fa-user-graduate"></i> Розробник</h3>
+      <p><strong>Богдан Барулін</strong></p>
+      <p>Група КН-22</p>
+      <p>Лабораторна робота №5</p>
+    </div>
+    <div class="footer-col">
+      <h3><i class="fa-solid fa-address-book"></i> Контакти</h3>
+      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:barulin@example.com">barulin@example.com</a></p>
+      <p><i class="fa-solid fa-phone"></i> <a href="tel:+380994366960">+38 099 436 69 60</a></p>
+    </div>
+    <div class="footer-col">
+      <h3><i class="fa-solid fa-book-open"></i> Ресурси</h3>
+      <p><a href="https://fonts.google.com" target="_blank"><i class="fa-brands fa-google"></i> Google Fonts</a></p>
+      <p><a href="https://fontawesome.com" target="_blank"><i class="fa-solid fa-font-awesome"></i> Font Awesome</a></p>
+      <p><a href="https://www.fontsquirrel.com" target="_blank"><i class="fa-solid fa-download"></i> Font Squirrel</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Богдан Барулін &mdash; КН-22. Лабораторна робота №5: Веб-типографіка.</p>
+  </div>
+</footer>
+
+</body>
+</html>

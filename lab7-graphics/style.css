@@ -1,0 +1,504 @@
+/* ============================================================
+   Лабораторна робота №7 — Веб-графіка
+   Студент: Барулін Богдан, КН-22
+   ============================================================ */
+
+:root {
+  --primary: #4a90d9;
+  --dark:    #1e5799;
+  --accent:  #e91e63;
+  --bg:      #f0f4f8;
+  --surface: #ffffff;
+  --text:    #333;
+  --muted:   #666;
+  --radius:  14px;
+  --shadow:  0 4px 20px rgba(0,0,0,.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+/* ---- HEADER ---- */
+.site-header {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+  color: #fff;
+  padding: 48px 24px 40px;
+  text-align: center;
+}
+.site-header h1 { font-size: 2rem; margin-bottom: 8px; }
+.site-header p  { opacity: .85; font-size: 1rem; }
+.meta-badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.badge {
+  background: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: .82rem;
+}
+
+/* ---- MAIN ---- */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* ---- SECTION CARD ---- */
+.section-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+
+.section-card h2 {
+  font-size: 1.4rem;
+  color: var(--dark);
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+  border-bottom: 3px solid var(--primary);
+}
+
+.section-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   ЗАВДАННЯ 4 — CSS КІТ
+   ============================================================ */
+.cat-scene {
+  background: linear-gradient(180deg, #87ceeb 0%, #b0dff5 58%, #7ec850 58%, #5aaa35 100%);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 40px 20px 30px;
+  min-height: 300px;
+}
+
+/* --- Весь кіт --- */
+.cat { position: relative; width: 140px; }
+
+/* --- Хвіст --- */
+.cat-tail {
+  position: absolute;
+  right: -40px;
+  bottom: 78px;
+  width: 70px;
+  height: 20px;
+  background: #f4a437;
+  border-radius: 0 30px 30px 0;
+  transform: rotate(-12deg);
+  border-right: 5px solid #d88b20;
+  z-index: 0;
+}
+
+/* --- Тіло --- */
+.cat-body {
+  width: 110px;
+  height: 90px;
+  background: #f4a437;
+  border-radius: 50% 50% 42% 42%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Передні лапи --- */
+.cat-paws {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -12px;
+  position: relative;
+  z-index: 2;
+}
+.cat-paw {
+  width: 30px;
+  height: 24px;
+  background: #f4a437;
+  border-radius: 0 0 14px 14px;
+  border-bottom: 4px solid #d88b20;
+}
+
+/* --- Голова --- */
+.cat-head {
+  width: 86px;
+  height: 78px;
+  background: #f4a437;
+  border-radius: 50% 50% 44% 44%;
+  margin: 0 auto -10px;
+  position: relative;
+  z-index: 3;
+}
+
+/* --- Вуха --- */
+.cat-ear {
+  position: absolute;
+  top: -26px;
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 30px solid #f4a437;
+}
+.cat-ear.left  { left: 4px; }
+.cat-ear.right { right: 4px; }
+
+.cat-ear::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: -9px;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 18px solid #f87c7c;
+}
+
+/* --- Обличчя --- */
+.cat-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding-top: 10px;
+}
+
+.cat-eyes {
+  display: flex;
+  gap: 14px;
+}
+.cat-eye {
+  width: 16px;
+  height: 16px;
+  background: #2e7d32;
+  border-radius: 50%;
+  position: relative;
+  border: 2px solid #1b5e20;
+}
+.cat-eye::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 6px;
+  height: 10px;
+  background: #111;
+  border-radius: 50%;
+}
+
+.cat-nose {
+  width: 12px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50% 50% 40% 40%;
+}
+.cat-mouth {
+  font-size: 13px;
+  color: #d88b20;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* --- Вуса --- */
+.cat-whiskers {
+  position: absolute;
+  top: 52%;
+  width: 110%;
+  left: -5%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.whisker-group { display: flex; flex-direction: column; gap: 5px; }
+.whisker-group span {
+  display: block;
+  width: 30px;
+  height: 1.5px;
+  background: #7a4f1a;
+  border-radius: 1px;
+}
+.whisker-group.right { transform: scaleX(-1); }
+
+/* ============================================================
+   ЗАВДАННЯ 6 — SVG
+   ============================================================ */
+.svg-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.svg-stage {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 30px;
+  border: 2px dashed #ddd;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.code-block {
+  width: 100%;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 10px;
+  padding: 24px;
+  font-family: 'Courier New', monospace;
+  font-size: .82rem;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+.code-block .t { color: #89b4fa; }   /* tag */
+.code-block .a { color: #a6e3a1; }   /* attribute */
+.code-block .v { color: #fab387; }   /* value */
+.code-block .c { color: #6c7086; font-style:italic; } /* comment */
+
+/* ============================================================
+   ЗАВДАННЯ 7 — ФАВІКОНКА
+   ============================================================ */
+.favicon-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.fav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.fav-item span {
+  font-size: .78rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.browser-mock {
+  background: #e8eaed;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  width: 240px;
+  border: 1px solid #ccc;
+}
+.browser-bar {
+  background: #dde0e4;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .8rem;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+}
+.browser-dots { display: flex; gap: 5px; }
+.browser-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.browser-dots span:nth-child(1) { background:#ff5f56; }
+.browser-dots span:nth-child(2) { background:#ffbd2e; }
+.browser-dots span:nth-child(3) { background:#27c93f; }
+.browser-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f3f4;
+  border-radius: 8px 8px 0 0;
+  padding: 5px 12px;
+  font-size: .78rem;
+  color: #333;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #f1f3f4;
+}
+.browser-content {
+  background: white;
+  padding: 16px;
+  font-size: .8rem;
+  color: var(--muted);
+  min-height: 60px;
+}
+
+/* ============================================================
+   ЗАВДАННЯ 8 — CSS-АНІМАЦІЯ
+   ============================================================ */
+.animation-stage {
+  background: linear-gradient(160deg, #0a0a2e 0%, #1a1a5e 45%, #2d1b69 100%);
+  border-radius: 12px;
+  padding: 50px 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Зорі */
+.stars { position: absolute; inset: 0; pointer-events: none; }
+.star {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--dur,2s) var(--del,0s) ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%,100% { opacity:.15; transform:scale(1); }
+  50%      { opacity:1;   transform:scale(1.6); }
+}
+
+.anim-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 1;
+}
+.anim-label {
+  color: rgba(255,255,255,.65);
+  font-size: .78rem;
+  text-align: center;
+}
+
+/* 1. Пульсуюче коло */
+.pulse-dot {
+  width: 80px; height: 80px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { transform:scale(1);    box-shadow:0 0 0 0 rgba(233,30,99,.7); }
+  50%      { transform:scale(1.15); box-shadow:0 0 0 18px rgba(233,30,99,0); }
+}
+
+/* 2. Обертаючий квадрат */
+.spin-box {
+  width: 70px; height: 70px;
+  background: linear-gradient(135deg, var(--primary), #a855f7);
+  border-radius: 14px;
+  animation: spinMorph 2.5s linear infinite;
+}
+@keyframes spinMorph {
+  0%   { transform:rotate(0deg)   scale(1);    border-radius:14px; }
+  25%  { transform:rotate(90deg)  scale(1.1);  border-radius:50%; }
+  50%  { transform:rotate(180deg) scale(1);    border-radius:14px; }
+  75%  { transform:rotate(270deg) scale(1.1);  border-radius:50%; }
+  100% { transform:rotate(360deg) scale(1);    border-radius:14px; }
+}
+
+/* 3. Стрибаючий м'яч */
+.bounce-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 130px;
+  justify-content: flex-end;
+}
+.ball {
+  width: 50px; height: 50px;
+  background: radial-gradient(circle at 35% 35%, #fff 4%, #f4a437 40%, #d88b20);
+  border-radius: 50%;
+  animation: bounce 0.9s cubic-bezier(.33,0,.66,1) infinite alternate;
+}
+@keyframes bounce {
+  0%   { transform:translateY(0)    scaleX(1)   scaleY(1); }
+  80%  { transform:translateY(-75px) scaleX(.9)  scaleY(1.1); }
+  100% { transform:translateY(-82px) scaleX(1.15) scaleY(.9); }
+}
+.ball-shadow {
+  width: 40px; height: 10px;
+  background: rgba(0,0,0,.4);
+  border-radius: 50%;
+  margin-top: 4px;
+  animation: shadowAnim .9s ease-in-out infinite alternate;
+}
+@keyframes shadowAnim {
+  0%   { transform:scaleX(1);   opacity:.4; }
+  100% { transform:scaleX(.35); opacity:.1; }
+}
+
+/* 4. Хвилі (loader) */
+.wave-loader { display:flex; align-items:center; gap:8px; }
+.wave-bar {
+  width: 10px; height: 50px;
+  background: linear-gradient(180deg, var(--primary), #a855f7);
+  border-radius: 6px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+.wave-bar:nth-child(1){ animation-delay:0s; }
+.wave-bar:nth-child(2){ animation-delay:.15s; }
+.wave-bar:nth-child(3){ animation-delay:.3s; }
+.wave-bar:nth-child(4){ animation-delay:.45s; }
+.wave-bar:nth-child(5){ animation-delay:.6s; }
+@keyframes wave {
+  0%,100% { transform:scaleY(.25); opacity:.5; }
+  50%      { transform:scaleY(1.3); opacity:1;  }
+}
+
+/* 5. Текстова анімація */
+.typing-text {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: #a6e3a1;
+  border-right: 2px solid #a6e3a1;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 9ch;
+  animation: typing 3s steps(9) infinite, blink .7s step-end infinite;
+}
+@keyframes typing {
+  0%,100% { width:0; }
+  30%,85% { width:9ch; }
+}
+@keyframes blink {
+  0%,100% { border-color:#a6e3a1; }
+  50%      { border-color:transparent; }
+}
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--dark);
+  color: rgba(255,255,255,.7);
+  text-align: center;
+  padding: 24px;
+  font-size: .875rem;
+  margin-top: 40px;
+}
+.site-footer p + p { margin-top: 4px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .section-card { padding: 24px 16px; }
+  .animation-stage { padding: 30px 12px; gap: 24px; }
+}
