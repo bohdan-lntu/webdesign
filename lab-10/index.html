@@ -40,6 +40,62 @@
     <p><strong>Тема:</strong> Основні конструкції мови JavaScript.</p>
     <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
 
+    
+<section style="margin:24px 0;padding:20px 24px;background:#eef3ff;border-left:4px solid #1457a8;border-radius:0 8px 8px 0;">
+  <h2 style="margin:0 0 14px;font-size:1.05rem;color:#1457a8;">Теорія: Основні конструкції JavaScript</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;">
+    <div>
+      <p style="margin:6px 0;font-size:14px;"><strong>if / else if / else</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">if (x &gt; 0) {
+  console.log('додатне');
+} else if (x === 0) {
+  console.log('нуль');
+} else {
+  console.log('від'ємне');
+}</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>Тернарний оператор</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">let res = x &gt; 0 ? 'плюс' : 'мінус';</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>switch</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">switch (day) {
+  case 1: console.log('Пн'); break;
+  case 2: console.log('Вт'); break;
+  default: console.log('інший');
+}</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>Логічні оператори</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">&amp;&amp;  — і (обидві умови true)
+||  — або (хоча б одна true)
+!   — заперечення</pre>
+    </div>
+    <div>
+      <p style="margin:6px 0;font-size:14px;"><strong>Цикли</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">// for — відома кількість кроків
+for (let i = 0; i &lt; 5; i++) { ... }
+
+// while — поки умова true
+while (i &lt; 5) { i++; }
+
+// do-while — виконується хоча б раз
+do { i++; } while (i &lt; 5);
+
+// for-in — ключі об'єкта
+for (let key in obj) { ... }
+
+// for-of — значення масиву
+for (let val of arr) { ... }</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>break та continue</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">for (let i = 0; i &lt; 10; i++) {
+  if (i === 3) continue; // пропустити i=3
+  if (i === 7) break;    // вийти при i=7
+  console.log(i);
+}</pre>
+    </div>
+  </div>
+</section>
+
     <h2>Практичні завдання</h2>
     <a href="lab2_1.html">Завдання 1. Умовний оператор if / else if / else</a>
     <a href="lab2_2.html">Завдання 2. Умовний оператор і тернарна операція</a>

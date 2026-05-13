@@ -17,6 +17,62 @@
     <p><strong>Тема:</strong> Використання функцій JavaScript.</p>
     <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
 
+    
+<section style="margin:24px 0;padding:20px 24px;background:#eef3ff;border-left:4px solid #1457a8;border-radius:0 8px 8px 0;">
+  <h2 style="margin:0 0 14px;font-size:1.05rem;color:#1457a8;">Теорія: Функції JavaScript</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;">
+    <div>
+      <p style="margin:6px 0;font-size:14px;"><strong>Способи оголошення</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">// Function Declaration (hoisting є)
+function add(a, b) { return a + b; }
+
+// Function Expression (hoisting немає)
+const add = function(a, b) { return a + b; };
+
+// Стрілкова функція
+const add = (a, b) =&gt; a + b;
+const square = x =&gt; x * x; // один параметр</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>Параметри за замовчуванням</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">function greet(name = 'Гість') {
+  return `Привіт, ${name}!`;
+}
+greet();         // 'Привіт, Гість!'
+greet('Богдан'); // 'Привіт, Богдан!'</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>Об'єкт arguments</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">function sum() {
+  let total = 0;
+  for (let v of arguments) total += v;
+  return total;
+}
+sum(1, 2, 3, 4); // 10</pre>
+    </div>
+    <div>
+      <p style="margin:6px 0;font-size:14px;"><strong>Callback (функція як аргумент)</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">function run(fn) { fn(); }
+run(() =&gt; console.log('виконано'));
+
+// Класичний приклад
+[1,2,3].forEach(function(x) {
+  console.log(x);
+});</pre>
+
+      <p style="margin:6px 0;font-size:14px;"><strong>Об'єкт Date</strong></p>
+      <pre style="background:#1e1e2e;color:#cdd6f4;padding:12px 16px;border-radius:6px;font-size:12.5px;line-height:1.7;overflow-x:auto;margin:10px 0 16px;tab-size:2;">const d = new Date();
+d.getFullYear()  // рік (2026)
+d.getMonth()     // місяць 0–11 (!)
+d.getDate()      // день місяця 1–31
+d.getDay()       // день тижня 0–6, 0=нд
+d.getHours()     // години
+d.getTime()      // мс від 01.01.1970
+
+// Різниця в днях
+const diff = (new Date('2026-12-31') - new Date()) / 86400000;</pre>
+    </div>
+  </div>
+</section>
+
     <h2>Практичні завдання</h2>
     <a href="lab3_1.html">Завдання 1. Date і виведення днів тижня</a>
     <a href="lab3_2.html">Завдання 2. Date і розрахунок часу до події</a>
