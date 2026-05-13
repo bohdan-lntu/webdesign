@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" role="img" aria-labelledby="title">
+  <title id="title">Монітор</title>
+  <rect width="360" height="210" rx="14" fill="#eefaf5"/>
+  <rect x="64" y="36" width="232" height="132" rx="10" fill="#21795b"/>
+  <rect x="88" y="58" width="184" height="86" rx="4" fill="#ffffff"/>
+  <rect x="162" y="168" width="36" height="18" fill="#26313d"/>
+  <rect x="128" y="186" width="104" height="10" rx="5" fill="#26313d"/>
+</svg>

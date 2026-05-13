@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Object - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    pre { padding: 14px; background: #f4f6f8; border: 1px solid #d8e0e8; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 7. Функція як змінна та об'єкт</h1>
+  <p class="task">Показати, що функцію можна зберігати у змінній і виводити як об'єкт.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    const formatName = function(firstName, lastName) {
+      return lastName + " " + firstName;
+    };
+
+    const studentName = formatName("Іван", "Петренко");
+
+    document.write("<p><strong>Результат виклику функції:</strong> " + studentName + "</p>");
+    document.write("<p><strong>Назва функції-змінної:</strong> formatName</p>");
+    document.write("<p><strong>Функція як об'єкт:</strong></p>");
+    document.write("<pre>" + formatName.toString() + "</pre>");
+  </script>
+</body>
+</html>
+

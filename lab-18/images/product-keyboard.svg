@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 210" role="img" aria-labelledby="title">
+  <title id="title">Клавіатура</title>
+  <rect width="360" height="210" rx="14" fill="#fff7ed"/>
+  <rect x="54" y="66" width="252" height="94" rx="12" fill="#8a4b00"/>
+  <g fill="#ffffff">
+    <rect x="78" y="90" width="28" height="18" rx="4"/>
+    <rect x="116" y="90" width="28" height="18" rx="4"/>
+    <rect x="154" y="90" width="28" height="18" rx="4"/>
+    <rect x="192" y="90" width="28" height="18" rx="4"/>
+    <rect x="230" y="90" width="28" height="18" rx="4"/>
+    <rect x="94" y="122" width="172" height="18" rx="4"/>
+  </g>
+</svg>

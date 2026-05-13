@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Оптимізована сторінка TechStore з SEO-метатегами, адаптивними зображеннями та аналізом інтернет-реклами">
+    <meta name="keywords" content="оптимізація сайту, SEO, PageSpeed, реклама, TechStore">
+    <meta name="author" content="Барулін Богдан, КН-22">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Оптимізація сайту TechStore - КН-22, Барулін Богдан</title>
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Головна навігація">
+            <a class="logo" href="index.html">TechStore</a>
+            <div class="nav-links">
+                <a href="#products">Товари</a>
+                <a href="#seo">SEO</a>
+                <a href="#ads">Реклама</a>
+                <a href="#pagespeed">PageSpeed</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div>
+                <p class="eyebrow">Лабораторне заняття №18</p>
+                <h1>Оптимізована сторінка TechStore</h1>
+                <p>Приклад оптимізації сайту: SEO-метатеги, легкі зображення, відкладене завантаження JavaScript, lazy-loading і аналіз реклами.</p>
+                <button class="primary-button" type="button" id="showOptimization">Показати оптимізації</button>
+            </div>
+            <aside class="student-card">
+                <strong>Виконав</strong>
+                <span>КН-22, Барулін Богдан</span>
+                <span>Варіант 2</span>
+            </aside>
+        </section>
+    </header>
+
+    <main>
+        <section class="section" id="products">
+            <h2>Оптимізовані картки товарів</h2>
+            <p>Зображення виконані як легкі SVG-файли, мають фіксовані розміри, атрибут alt і lazy-loading.</p>
+            <div class="product-grid">
+                <article class="product-card">
+                    <img src="images/product-laptop.svg" width="360" height="210" loading="lazy" alt="Ноутбук Acer Study Pro">
+                    <h3>Acer Study Pro</h3>
+                    <p>Ноутбук для навчання, програмування та відеозустрічей.</p>
+                </article>
+                <article class="product-card">
+                    <img src="images/product-monitor.svg" width="360" height="210" loading="lazy" alt="Монітор ViewMax 24">
+                    <h3>ViewMax 24</h3>
+                    <p>Монітор для комфортної роботи з кодом і дизайном.</p>
+                </article>
+                <article class="product-card">
+                    <img src="images/product-keyboard.svg" width="360" height="210" loading="lazy" alt="Клавіатура KeyLab Compact">
+                    <h3>KeyLab Compact</h3>
+                    <p>Компактна клавіатура для швидкого набору тексту.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="seo">
+            <h2>SEO-оптимізація</h2>
+            <ul class="check-list">
+                <li>Додано унікальний і зрозумілий title.</li>
+                <li>Додано meta description, keywords, author, robots.</li>
+                <li>На сторінці є один основний h1.</li>
+                <li>Заголовки h2/h3 використані ієрархічно.</li>
+                <li>Зображення мають alt-описи.</li>
+                <li>Навігація використовує зрозумілі anchor-посилання.</li>
+            </ul>
+        </section>
+
+        <section class="section" id="pagespeed">
+            <h2>PageSpeed Insights: показники та рекомендації</h2>
+            <div class="metric-grid">
+                <article>
+                    <h3>LCP</h3>
+                    <p>Швидкість появи найбільшого видимого елемента. Покращення: оптимізувати hero-блок і зображення.</p>
+                </article>
+                <article>
+                    <h3>INP</h3>
+                    <p>Швидкість реакції на дії користувача. Покращення: мінімізувати JS і не блокувати головний потік.</p>
+                </article>
+                <article>
+                    <h3>CLS</h3>
+                    <p>Стабільність макета. Покращення: задавати width і height для зображень.</p>
+                </article>
+                <article>
+                    <h3>FCP</h3>
+                    <p>Час появи першого контенту. Покращення: скоротити критичний CSS і ресурси.</p>
+                </article>
+                <article>
+                    <h3>TTFB</h3>
+                    <p>Час відповіді сервера. Покращення: кешування, CDN, якісний хостинг.</p>
+                </article>
+            </div>
+            <p class="status" id="optimizationStatus">Натисніть кнопку у hero-блоці, щоб побачити короткий список виконаних оптимізацій.</p>
+        </section>
+
+        <section class="section" id="ads">
+            <h2>Порівняння видів інтернет-реклами</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Вид реклами</th>
+                            <th>Складність реалізації</th>
+                            <th>Інтеграція</th>
+                            <th>Вплив на продуктивність</th>
+                            <th>Ефективність</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Контекстна реклама</td>
+                            <td>Середня</td>
+                            <td>Google Ads, аналітика, теги</td>
+                            <td>Може додавати сторонні скрипти</td>
+                            <td>Швидке залучення аудиторії</td>
+                        </tr>
+                        <tr>
+                            <td>Банерна реклама</td>
+                            <td>Низька</td>
+                            <td>Зображення або рекламна мережа</td>
+                            <td>Залежить від ваги банера</td>
+                            <td>Середня, можлива банерна сліпота</td>
+                        </tr>
+                        <tr>
+                            <td>Соціальні мережі</td>
+                            <td>Середня</td>
+                            <td>Pixel, рекламний кабінет</td>
+                            <td>Можливе навантаження від трекерів</td>
+                            <td>Висока завдяки таргетингу</td>
+                        </tr>
+                        <tr>
+                            <td>SEO-просування</td>
+                            <td>Середня</td>
+                            <td>Без обов'язкових сторонніх скриптів</td>
+                            <td>Зазвичай позитивний вплив</td>
+                            <td>Довгостроковий органічний трафік</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <article class="ad-example">
+                <h3>Приклад банерної реклами</h3>
+                <a class="ad-banner" href="#products" aria-label="Перейти до товарів TechStore">
+                    <span>TechStore</span>
+                    <strong>Знижки на техніку для навчання</strong>
+                </a>
+            </article>
+        </section>
+
+        <section class="section materials">
+            <h2>Матеріали</h2>
+            <a href="report.md">Звіт</a>
+            <a href="control-questions.md">Контрольні питання</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>TechStore optimized page</span>
+        <span>КН-22, Барулін Богдан</span>
+    </footer>
+</body>
+</html>

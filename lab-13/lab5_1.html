@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рядки 1 - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 900px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 1. Обробка символів рядка</h1>
+  <p class="task">Варіант 2: після кожного символу ',' вставити пробіл і підрахувати кількість букв 'A' та 'B' окремо.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function countLetter(text, letter) {
+      let count = 0;
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] === letter) {
+          count++;
+        }
+      }
+      return count;
+    }
+
+    function addSpaceAfterComma(text) {
+      return text.replace(/,/g, ", ");
+    }
+
+    const source = prompt("Введіть рядок", "A,B,C,ABBA,JavaScript") || "";
+    const countA = countLetter(source, "A");
+    const countB = countLetter(source, "B");
+    const changed = addSpaceAfterComma(source);
+
+    document.write("<div class='row'><strong>Початковий рядок:</strong><br><code>" + source + "</code></div>");
+    document.write("<div class='row'><strong>Кількість букв 'A':</strong> " + countA + "</div>");
+    document.write("<div class='row'><strong>Кількість букв 'B':</strong> " + countB + "</div>");
+    document.write("<div class='row'><strong>Після вставки пробілу після ',':</strong><br><code>" + changed + "</code></div>");
+  </script>
+</body>
+</html>
+

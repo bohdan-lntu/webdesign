@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Argument - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th, td { border: 1px solid #cbd7e3; padding: 9px; text-align: left; }
+    th { background: #eef5ff; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 6. Передача функції як аргументу</h1>
+  <p class="task">Передати математичну функцію в іншу функцію для обробки значення.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function square(x) {
+      return x * x;
+    }
+
+    function doubleValue(x) {
+      return x * 2;
+    }
+
+    function calculateExpression(value, action) {
+      return action(value) + value + 10;
+    }
+
+    const number = 6;
+
+    document.write("<table>");
+    document.write("<tr><th>Функція-аргумент</th><th>Результат</th></tr>");
+    document.write("<tr><td>square</td><td>" + calculateExpression(number, square) + "</td></tr>");
+    document.write("<tr><td>doubleValue</td><td>" + calculateExpression(number, doubleValue) + "</td></tr>");
+    document.write("</table>");
+  </script>
+</body>
+</html>
+

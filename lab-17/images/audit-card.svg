@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">Аудит HTML та CSS</title>
+  <desc id="desc">Схематична ілюстрація перевірки коду, адаптивності та доступності.</desc>
+  <rect width="960" height="320" fill="#eef5ff"/>
+  <rect x="70" y="54" width="330" height="212" rx="14" fill="#1457a8"/>
+  <rect x="100" y="88" width="190" height="18" rx="4" fill="#ffffff"/>
+  <rect x="100" y="124" width="250" height="14" rx="4" fill="#d9ecff"/>
+  <rect x="100" y="154" width="220" height="14" rx="4" fill="#d9ecff"/>
+  <rect x="100" y="184" width="260" height="14" rx="4" fill="#d9ecff"/>
+  <circle cx="690" cy="160" r="92" fill="#21795b"/>
+  <path d="M648 160l28 28 58-68" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="70" y="300" fill="#154f8f" font-family="Arial, sans-serif" font-size="26" font-weight="700">HTML + CSS validation</text>
+</svg>

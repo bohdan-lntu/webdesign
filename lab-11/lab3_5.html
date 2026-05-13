@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Default Params - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 5. Необов'язкові параметри та значення за замовчуванням</h1>
+  <p class="task">Створити функцію для форматованого виведення повідомлень з параметрами за замовчуванням.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printCard(title, text = "Опис не вказано", color = "#1457a8") {
+      document.write("<section style='border:1px solid #cbd7e3;border-left:5px solid " + color + ";padding:12px 16px;margin:12px 0;'>");
+      document.write("<h2 style='margin:0 0 8px;color:" + color + ";'>" + title + "</h2>");
+      document.write("<p style='margin:0;'>" + text + "</p>");
+      document.write("</section>");
+    }
+
+    printCard("HTML", "Створює структуру вебсторінки.", "#1457a8");
+    printCard("CSS", "Оформлює зовнішній вигляд сторінки.", "#276749");
+    printCard("JavaScript");
+  </script>
+</body>
+</html>
+

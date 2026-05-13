@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arguments - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th, td { border: 1px solid #cbd7e3; padding: 9px; text-align: left; }
+    th { background: #eef5ff; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 8. Використання масиву arguments</h1>
+  <p class="task">Створити функцію, яка обчислює середнє арифметичне довільної кількості аргументів.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function average() {
+      let sum = 0;
+
+      if (arguments.length === 0) {
+        return 0;
+      }
+
+      for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+      }
+
+      return sum / arguments.length;
+    }
+
+    document.write("<table>");
+    document.write("<tr><th>Аргументи</th><th>Середнє значення</th></tr>");
+    document.write("<tr><td>10, 12, 9</td><td>" + average(10, 12, 9).toFixed(2) + "</td></tr>");
+    document.write("<tr><td>5, 7, 8, 10, 12</td><td>" + average(5, 7, 8, 10, 12).toFixed(2) + "</td></tr>");
+    document.write("<tr><td>100, 95</td><td>" + average(100, 95).toFixed(2) + "</td></tr>");
+    document.write("</table>");
+  </script>
+</body>
+</html>
+

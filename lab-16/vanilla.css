@@ -1,0 +1,338 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.55;
+  color: #24313f;
+  background: #f4f7fb;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+.button-link {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: #fff;
+  background: #1457a8;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:hover,
+.button-link:hover,
+button:focus-visible,
+.button-link:focus-visible {
+  background: #0f447f;
+  outline: 3px solid rgba(20, 87, 168, 0.25);
+}
+
+.button-link.secondary {
+  background: #21795b;
+}
+
+.site-header,
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 42px 40px;
+  color: #fff;
+  background: #154f8f;
+}
+
+.site-header h1,
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+}
+
+.site-header p,
+.hero p {
+  max-width: 760px;
+  margin: 0;
+}
+
+.eyebrow {
+  margin-bottom: 8px !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.student-card,
+.hero-note {
+  min-width: 230px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.student-card span,
+.hero-note span {
+  display: block;
+  margin-top: 8px;
+}
+
+.home-layout,
+.product-section,
+.contact-section {
+  max-width: 1120px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+.panel,
+.contact-form {
+  margin-bottom: 18px;
+  padding: 24px;
+  border: 1px solid #d7e0ea;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.home-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 40px;
+  color: #fff;
+  background: #1457a8;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-menu a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-menu a:hover {
+  text-decoration: underline;
+}
+
+.nav-toggle {
+  display: none;
+  background: #21795b;
+}
+
+.primary-action {
+  margin-top: 18px;
+  font-size: 18px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.section-heading h2,
+.contact-form h2 {
+  margin: 0 0 6px;
+  color: #154f8f;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  padding: 20px;
+  border: 1px solid #d7e0ea;
+  border-radius: 8px;
+  background: #fff;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(31, 41, 55, 0.12);
+}
+
+.product-card span {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #1457a8;
+  background: #eef5ff;
+  font-weight: 700;
+}
+
+.product-card h3 {
+  margin: 0 0 8px;
+}
+
+.product-card p {
+  min-height: 72px;
+}
+
+.contact-form {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #bdc9d6;
+  border-radius: 6px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #1457a8;
+  outline: 3px solid rgba(20, 87, 168, 0.18);
+}
+
+.form-status {
+  min-height: 24px;
+  font-weight: 700;
+}
+
+.success {
+  color: #21795b;
+}
+
+.error {
+  color: #b42318;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 40px;
+  color: #fff;
+  background: #1457a8;
+}
+
+.custom-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.62);
+}
+
+.custom-modal.hidden {
+  display: none;
+}
+
+.custom-modal-content {
+  width: min(460px, 100%);
+  padding: 24px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.custom-modal-content h2 {
+  margin-top: 0;
+  color: #154f8f;
+}
+
+@media (max-width: 860px) {
+  .site-header,
+  .hero {
+    display: block;
+    padding: 30px 20px;
+  }
+
+  .student-card,
+  .hero-note {
+    margin-top: 18px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    align-items: flex-start;
+    padding: 14px 20px;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 58px;
+    left: 20px;
+    right: 20px;
+    display: none;
+    flex-direction: column;
+    padding: 14px;
+    border-radius: 8px;
+    background: #0f447f;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    display: block;
+    padding: 22px 20px;
+  }
+
+  .footer span {
+    display: block;
+    margin: 4px 0;
+  }
+}

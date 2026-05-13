@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Цикли - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    section { margin-top: 18px; padding: 16px; border: 1px solid #cbd7e3; border-radius: 8px; }
+    h2 { margin-top: 0; color: #1457a8; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 4. Використання циклів for, while, do while</h1>
+  <p class="task">Обчислити суму чисел від 1 до n різними видами циклів.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function sumWithFor(n) {
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      return sum;
+    }
+
+    function sumWithWhile(n) {
+      let sum = 0;
+      let i = 1;
+      while (i <= n) {
+        sum += i;
+        i++;
+      }
+      return sum;
+    }
+
+    function sumWithDoWhile(n) {
+      let sum = 0;
+      let i = 1;
+      if (n < 1) return 0;
+      do {
+        sum += i;
+        i++;
+      } while (i <= n);
+      return sum;
+    }
+
+    const n = parseInt(prompt("Введіть ціле число n", "10"), 10);
+
+    if (Number.isNaN(n) || n < 1) {
+      document.write("<p><strong>Помилка:</strong> n має бути цілим числом більше 0.</p>");
+    } else {
+      document.write("<section><h2>Цикл for</h2>");
+      document.write("<p>Сума чисел від 1 до " + n + " = " + sumWithFor(n) + "</p></section>");
+      document.write("<section><h2>Цикл while</h2>");
+      document.write("<p>Сума чисел від 1 до " + n + " = " + sumWithWhile(n) + "</p></section>");
+      document.write("<section><h2>Цикл do while</h2>");
+      document.write("<p>Сума чисел від 1 до " + n + " = " + sumWithDoWhile(n) + "</p></section>");
+    }
+  </script>
+</body>
+</html>
+

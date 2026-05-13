@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тернарна операція - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 820px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th, td { border: 1px solid #cbd7e3; padding: 9px; text-align: left; }
+    th { background: #eef5ff; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 2. Умовний оператор і умовна операція</h1>
+  <p class="task">Порівняти три оцінки студента, визначити найвищу оцінку та рівень успішності.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function readMark(message, defaultValue) {
+      return parseFloat(prompt(message, defaultValue));
+    }
+
+    function getLevel(mark) {
+      if (mark >= 90) return "відмінно";
+      if (mark >= 75) return "добре";
+      if (mark >= 60) return "задовільно";
+      return "потрібно покращити";
+    }
+
+    const htmlMark = readMark("Введіть оцінку з HTML", "86");
+    const cssMark = readMark("Введіть оцінку з CSS", "91");
+    const jsMark = readMark("Введіть оцінку з JavaScript", "78");
+
+    if (Number.isNaN(htmlMark) || Number.isNaN(cssMark) || Number.isNaN(jsMark)) {
+      document.write("<p><strong>Помилка:</strong> потрібно вводити числа.</p>");
+    } else {
+      let maxMark;
+      let bestSubject;
+
+      if (htmlMark >= cssMark && htmlMark >= jsMark) {
+        maxMark = htmlMark;
+        bestSubject = "HTML";
+      } else if (cssMark >= jsMark) {
+        maxMark = cssMark;
+        bestSubject = "CSS";
+      } else {
+        maxMark = jsMark;
+        bestSubject = "JavaScript";
+      }
+
+      const ternaryMax = htmlMark > cssMark ? (htmlMark > jsMark ? htmlMark : jsMark) : (cssMark > jsMark ? cssMark : jsMark);
+      const average = (htmlMark + cssMark + jsMark) / 3;
+      const passed = average >= 60 ? "зараховано" : "не зараховано";
+
+      document.write("<table>");
+      document.write("<tr><th>Показник</th><th>Значення</th></tr>");
+      document.write("<tr><td>HTML</td><td>" + htmlMark + "</td></tr>");
+      document.write("<tr><td>CSS</td><td>" + cssMark + "</td></tr>");
+      document.write("<tr><td>JavaScript</td><td>" + jsMark + "</td></tr>");
+      document.write("<tr><td>Найвища оцінка через if</td><td>" + bestSubject + ": " + maxMark + "</td></tr>");
+      document.write("<tr><td>Найвища оцінка через тернарну операцію</td><td>" + ternaryMax + "</td></tr>");
+      document.write("<tr><td>Середній бал</td><td>" + average.toFixed(2) + " (" + getLevel(average) + ")</td></tr>");
+      document.write("<tr><td>Підсумок</td><td>" + passed + "</td></tr>");
+      document.write("</table>");
+    }
+  </script>
+</body>
+</html>
+

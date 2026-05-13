@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Return Function - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th, td { border: 1px solid #cbd7e3; padding: 9px; text-align: left; }
+    th { background: #eef5ff; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 4. Функція, що повертає значення</h1>
+  <p class="task">Створити функцію для обчислення вартості покупки зі знижкою.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function calculatePrice(price, quantity, discountPercent) {
+      const total = price * quantity;
+      const discount = total * discountPercent / 100;
+      return total - discount;
+    }
+
+    const price = 320;
+    const quantity = 3;
+    const discount = 12;
+    const finalPrice = calculatePrice(price, quantity, discount);
+
+    document.write("<table>");
+    document.write("<tr><th>Показник</th><th>Значення</th></tr>");
+    document.write("<tr><td>Ціна товару</td><td>" + price + " грн</td></tr>");
+    document.write("<tr><td>Кількість</td><td>" + quantity + "</td></tr>");
+    document.write("<tr><td>Знижка</td><td>" + discount + "%</td></tr>");
+    document.write("<tr><td>До сплати</td><td>" + finalPrice.toFixed(2) + " грн</td></tr>");
+    document.write("</table>");
+  </script>
+</body>
+</html>
+

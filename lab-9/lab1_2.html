@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Арифметичні вирази - КН-22, Барулін Богдан</title>
+</head>
+<body>
+  <h1>Завдання 2. Обчислення арифметичних виразів</h1>
+  <p>У скрипті використано prompt(), parseFloat(), змінні та арифметичні оператори.</p>
+
+  <script>
+    "use strict";
+
+    const x = parseFloat(prompt("Введіть значення x", "5"));
+    const y = parseFloat(prompt("Введіть значення y", "2"));
+
+    if (Number.isNaN(x) || Number.isNaN(y)) {
+      alert("Помилка: потрібно вводити числові значення.");
+    } else {
+      const numerator = 3 * x * x + 2 * x * y - y;
+      const denominator = x + y + 1;
+      if (denominator === 0) {
+        alert("Помилка: знаменник x + y + 1 дорівнює нулю.");
+      } else {
+        const result = numerator / denominator;
+
+        alert("Вираз: (3x^2 + 2xy - y) / (x + y + 1)");
+        alert("Результат = " + result.toFixed(3));
+      }
+    }
+  </script>
+</body>
+</html>
+

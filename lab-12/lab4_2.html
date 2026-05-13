@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Масиви 2 - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 900px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 2. Обробка масиву без вбудованих функцій</h1>
+  <p class="task">Варіант 2: знайти мінімальний елемент та поміняти його місцями з попереднім елементом масиву. Вбудовані методи масивів для обробки не використовуються.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printArray(title, array) {
+      let text = "";
+      for (let i = 0; i < array.length; i++) {
+        text += array[i] + "  ";
+      }
+      document.write("<div class='row'><strong>" + title + ":</strong><br><code>" + text + "</code></div>");
+    }
+
+    const numbers = [];
+
+    for (let i = 0; i < 15; i++) {
+      numbers[i] = Math.floor(Math.random() * 101) - 50;
+    }
+
+    printArray("Початковий масив", numbers);
+
+    let minIndex = 0;
+    for (let i = 1; i < numbers.length; i++) {
+      if (numbers[i] < numbers[minIndex]) {
+        minIndex = i;
+      }
+    }
+
+    document.write("<p><strong>Мінімальний елемент був на позиції:</strong> " + (minIndex + 1) + "</p>");
+
+    if (minIndex > 0) {
+      const previousIndex = minIndex - 1;
+      const temp = numbers[previousIndex];
+      numbers[previousIndex] = numbers[minIndex];
+      numbers[minIndex] = temp;
+      printArray("Масив після обміну мінімального елемента з попереднім", numbers);
+    } else {
+      document.write("<p><strong>Обмін не виконано:</strong> мінімальний елемент стоїть першим і не має попереднього елемента.</p>");
+      printArray("Масив без змін", numbers);
+    }
+  </script>
+</body>
+</html>
+

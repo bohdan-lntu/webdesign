@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Масиви 3 - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 900px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 3. Обробка масиву вбудованими методами</h1>
+  <p class="task">Варіант 2: знайти суму чисел, менших за задане D, і кількість чисел, що стоять на парних місцях і більших за задане C.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printArray(title, array) {
+      document.write("<div class='row'><strong>" + title + ":</strong><br><code>" + array.join("&nbsp;&nbsp;") + "</code></div>");
+    }
+
+    const numbers = Array.from({ length: 15 }, function() {
+      return Math.floor(Math.random() * 101) - 50;
+    });
+
+    const d = parseInt(prompt("Введіть значення D", "20"), 10);
+    const c = parseInt(prompt("Введіть значення C", "10"), 10);
+
+    const sumLessThanD = numbers.filter(function(item) {
+      return item < d;
+    }).reduce(function(sum, item) {
+      return sum + item;
+    }, 0);
+
+    const countEvenPlacesGreaterThanC = numbers.filter(function(item, index) {
+      const place = index + 1;
+      return place % 2 === 0 && item > c;
+    }).length;
+
+    printArray("Початковий масив", numbers);
+    document.write("<div class='row'><strong>D:</strong> " + d + "; <strong>C:</strong> " + c + "</div>");
+    document.write("<div class='row'><strong>Сума чисел, менших за D:</strong> " + sumLessThanD + "</div>");
+    document.write("<div class='row'><strong>Кількість чисел на парних місцях і більших за C:</strong> " + countEvenPlacesGreaterThanC + "</div>");
+  </script>
+</body>
+</html>
+

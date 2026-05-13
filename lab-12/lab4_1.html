@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Масиви 1 - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 1. Створення та об'єднання масивів</h1>
+  <p class="task">Створити масив трикутних чисел, масив квадратів, об'єднати їх і відсортувати у зворотному порядку.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printArray(title, array) {
+      document.write("<div class='row'><strong>" + title + ":</strong><br><code>" + array.join("&nbsp;&nbsp;") + "</code></div>");
+    }
+
+    const treag = [];
+    const kvd = [];
+
+    for (let n = 1; n <= 10; n++) {
+      treag.push(n * (n + 1) / 2);
+      kvd.push(n * n);
+    }
+
+    const rez = treag.concat(kvd);
+    const reverseRez = rez.slice().sort(function(a, b) {
+      return b - a;
+    });
+
+    printArray("Масив Treag", treag);
+    printArray("Масив kvd", kvd);
+    printArray("Об'єднаний масив rez", rez);
+    printArray("Масив rez у зворотному порядку", reverseRez);
+  </script>
+</body>
+</html>
+

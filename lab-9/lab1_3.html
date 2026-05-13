@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Об'єкт Math - КН-22, Барулін Богдан</title>
+</head>
+<body>
+  <h1>Завдання 3. Обчислення з використанням Math</h1>
+  <p>Скрипт обчислює параметри правильного n-кутника, описаного біля кола.</p>
+
+  <script>
+    "use strict";
+
+    const n = parseInt(prompt("Введіть кількість сторін n", "6"), 10);
+    const radius = parseFloat(prompt("Введіть радіус вписаного кола R", "4"));
+
+    if (Number.isNaN(n) || Number.isNaN(radius) || n < 3 || radius <= 0) {
+      alert("Помилка: n має бути цілим числом від 3, а R має бути додатним числом.");
+    } else {
+      const side = 2 * radius * Math.tan(Math.PI / n);
+      const perimeter = n * side;
+      const area = perimeter * radius / 2;
+      const outerRadius = radius / Math.cos(Math.PI / n);
+      const diagonal = 2 * outerRadius * Math.sin(2 * Math.PI / n);
+
+      alert("Сторона n-кутника = " + side.toFixed(2));
+      alert("Периметр = " + perimeter.toFixed(2));
+      alert("Площа = " + area.toFixed(2));
+      alert("Радіус описаного кола = " + outerRadius.toFixed(2));
+      alert("Діагональ через одну вершину = " + diagonal.toFixed(2));
+    }
+  </script>
+</body>
+</html>
+

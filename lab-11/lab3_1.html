@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date WeekDay - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 1. Вбудовані функції об'єкта Date</h1>
+  <p class="task">Відобразити поточну дату і назви днів тижня різними розмірами та кольорами за допомогою функції weekDay().</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function weekDay(size, day, color) {
+      document.write("<div style='font-size:" + size + "px;color:" + color + ";margin:6px 0;'>" + day + "</div>");
+    }
+
+    function addZero(value) {
+      return value < 10 ? "0" + value : value;
+    }
+
+    const today = new Date();
+    const currentDate = addZero(today.getDate()) + "." + addZero(today.getMonth() + 1) + "." + today.getFullYear();
+    const currentTime = addZero(today.getHours()) + ":" + addZero(today.getMinutes());
+
+    document.write("<h2>Сьогодні: " + currentDate + ", " + currentTime + "</h2>");
+    weekDay(18, "понеділок", "#1457a8");
+    weekDay(20, "вівторок", "#276749");
+    weekDay(22, "середа", "#8a4b00");
+    weekDay(24, "четвер", "#6b2f91");
+    weekDay(26, "п'ятниця", "#b42318");
+    weekDay(28, "субота", "#0f766e");
+    weekDay(30, "неділя", "#7f1d1d");
+  </script>
+</body>
+</html>
+

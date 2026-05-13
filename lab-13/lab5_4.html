@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Перемішування - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 900px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 4. Перемішування букв у словах</h1>
+  <p class="task">У кожному слові перемішати букви місцями, крім першої та останньої букви слова.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function shuffleMiddleLetters(word) {
+      if (word.length <= 3) {
+        return word;
+      }
+
+      const first = word[0];
+      const last = word[word.length - 1];
+      const middle = word.slice(1, -1).split("");
+
+      for (let i = middle.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = middle[i];
+        middle[i] = middle[j];
+        middle[j] = temp;
+      }
+
+      return first + middle.join("") + last;
+    }
+
+    function shuffleText(text) {
+      return text.split(/(\s+)/).map(function(part) {
+        if (/^\s+$/.test(part)) {
+          return part;
+        }
+        return shuffleMiddleLetters(part);
+      }).join("");
+    }
+
+    const source = prompt("Введіть текст", "JavaScript дозволяє обробляти текстові рядки") || "";
+    const changed = shuffleText(source);
+
+    document.write("<div class='row'><strong>Початковий текст:</strong><br><code>" + source + "</code></div>");
+    document.write("<div class='row'><strong>Текст після перемішування:</strong><br><code>" + changed + "</code></div>");
+  </script>
+</body>
+</html>
+

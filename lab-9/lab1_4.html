@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Динамічна сторінка - КН-22, Барулін Богдан</title>
+</head>
+<body>
+  <script>
+    "use strict";
+
+    const topic = "Знайомство з JavaScript";
+    const student = "КН-22, Барулін Богдан";
+    const currentYear = new Date().getFullYear();
+
+    document.write("<main style='max-width:760px;margin:40px auto;font-family:Arial,sans-serif;line-height:1.6;'>");
+    document.write("<h1 style='color:#1457a8;'>Лабораторна робота №9</h1>");
+    document.write("<h2>" + topic + "</h2>");
+    document.write("<p><strong>Виконав:</strong> " + student + "</p>");
+    document.write("<p>Цю сторінку сформовано за допомогою методу <strong>document.write()</strong>.</p>");
+    document.write("<table style='width:100%;border-collapse:collapse;margin-top:18px;'>");
+    document.write("<tr style='background:#eaf2ff;'><th style='border:1px solid #9bb8d8;padding:8px;'>Елемент</th><th style='border:1px solid #9bb8d8;padding:8px;'>Приклад</th></tr>");
+    document.write("<tr><td style='border:1px solid #9bb8d8;padding:8px;'>Змінна</td><td style='border:1px solid #9bb8d8;padding:8px;'>topic</td></tr>");
+    document.write("<tr><td style='border:1px solid #9bb8d8;padding:8px;'>Константа</td><td style='border:1px solid #9bb8d8;padding:8px;'>currentYear = " + currentYear + "</td></tr>");
+    document.write("<tr><td style='border:1px solid #9bb8d8;padding:8px;'>Виведення</td><td style='border:1px solid #9bb8d8;padding:8px;'>document.write()</td></tr>");
+    document.write("</table>");
+    document.write("<p style='margin-top:18px;color:#445;'>JavaScript дозволяє створювати інтерактивні та динамічні вебсторінки.</p>");
+    document.write("</main>");
+  </script>
+</body>
+</html>
+

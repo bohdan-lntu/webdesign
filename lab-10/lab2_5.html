@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For In - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th, td { border: 1px solid #cbd7e3; padding: 9px; text-align: left; }
+    th { background: #eef5ff; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 5. Використання циклу for in</h1>
+  <p class="task">Перебрати властивості об'єкта, який описує навчальний курс.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printObjectTable(objectTitle, objectData) {
+      document.write("<h2>" + objectTitle + "</h2>");
+      document.write("<table>");
+      document.write("<tr><th>Властивість</th><th>Значення</th></tr>");
+
+      for (let propertyName in objectData) {
+        document.write("<tr><td>" + propertyName + "</td><td>" + objectData[propertyName] + "</td></tr>");
+      }
+
+      document.write("</table>");
+    }
+
+    const course = {
+      title: "Вебтехнології",
+      labNumber: 10,
+      topic: "Основні конструкції JavaScript",
+      language: "JavaScript",
+      developer: "КН-22, Барулін Богдан"
+    };
+
+    printObjectTable("Інформація про курс", course);
+  </script>
+</body>
+</html>
+

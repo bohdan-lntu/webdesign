@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Діалогові вікна - КН-22, Барулін Богдан</title>
+</head>
+<body>
+  <h1>Завдання 1. Робота з діалоговими вікнами</h1>
+  <p>Сторінка демонструє методи alert(), confirm() та prompt().</p>
+
+  <script>
+    "use strict";
+
+    alert("Вітаю! Це власне діалогове вікно для лабораторної роботи №9.");
+
+    const wantsToContinue = confirm("Бажаєте виконати невелике знайомство з JavaScript?");
+
+    if (wantsToContinue) {
+      const userName = prompt("Введіть ваше ім'я", "Студент");
+      const safeName = userName || "Гість";
+      const favoriteTopic = prompt("Яка тема вебтехнологій вам цікава?", "JavaScript");
+
+      alert(safeName + ", чудово! Тема \"" + (favoriteTopic || "JavaScript") + "\" справді корисна для веброзробки.");
+    } else {
+      alert("Шкода, але JavaScript ще обов'язково стане у пригоді!");
+    }
+  </script>
+</body>
+</html>
+

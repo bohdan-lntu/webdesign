@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Args - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 3. Функція користувача з аргументами</h1>
+  <p class="task">Створити функцію, яка виводить повідомлення з переданими параметрами.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printTopic(number, title, status) {
+      document.write("<p><strong>" + number + ".</strong> " + title + " — " + status + "</p>");
+    }
+
+    printTopic(1, "Оголошення функції", "виконано");
+    printTopic(2, "Передача аргументів", "виконано");
+    printTopic(3, "Повторний виклик функції", "виконано");
+  </script>
+</body>
+</html>
+

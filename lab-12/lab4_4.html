@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Масиви 4 - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 900px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 4. Методи масивів</h1>
+  <p class="task">Виконати послідовні операції над масивами fruits і citrus.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function printArray(title, array) {
+      document.write("<div class='row'><strong>" + title + ":</strong><br><code>" + array.join(", ") + "</code></div>");
+    }
+
+    const fruits = ["apple", "pineapple", "mango", "melon", "grape"];
+    const citrus = ["orange", "lemon", "lime"];
+
+    printArray("Масив fruits", fruits);
+    printArray("Масив citrus", citrus);
+
+    const joinedFruits = fruits.concat(citrus);
+    printArray("Об'єднаний масив fruits і citrus", joinedFruits);
+
+    const insertedFruits = fruits.slice();
+    insertedFruits.splice(3, 0, "pear", "cherry", "plum", "raspberry", "strawberry");
+    printArray("Після mango вставлено pear, cherry, plum, raspberry, strawberry", insertedFruits);
+
+    const removedLastThree = insertedFruits.slice();
+    removedLastThree.splice(-3, 3);
+    printArray("Після видалення останніх 3 елементів", removedLastThree);
+
+    const alphabeticFruits = fruits.slice().sort();
+    printArray("Сортування fruits за алфавітом", alphabeticFruits);
+
+    const reverseAlphabeticFruits = fruits.slice().sort().reverse();
+    printArray("Зворотний алфавітний порядок fruits", reverseAlphabeticFruits);
+
+    const lengthSortedFruits = fruits.slice().sort(function(a, b) {
+      return a.length - b.length;
+    });
+    printArray("Сортування fruits за довжиною слів", lengthSortedFruits);
+  </script>
+</body>
+</html>
+

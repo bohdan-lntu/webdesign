@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla - КН-22, Барулін Богдан</title>
+  <link rel="stylesheet" href="vanilla.css">
+  <script src="vanilla.js" defer></script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="index.html">TechStore</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">Меню</button>
+    <div class="nav-menu" id="navMenu">
+      <a href="#products">Товари</a>
+      <a href="#contact">Контакти</a>
+      <a href="bootstrap.html">Bootstrap-версія</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Vanilla CSS/JS</p>
+      <h1>Техніка для навчання та роботи</h1>
+      <p>Той самий інтерфейс, але створений власними стилями, CSS Grid/Flexbox, media queries і чистим JavaScript.</p>
+      <button class="primary-action" type="button" data-modal-message="Консультацію замовлено у Vanilla-версії.">Отримати консультацію</button>
+    </div>
+    <aside class="hero-note">
+      <strong>КН-22, Барулін Богдан</strong>
+      <span>Лабораторна робота №16. Vanilla-підхід.</span>
+    </aside>
+  </header>
+
+  <main>
+    <section class="product-section" id="products">
+      <div class="section-heading">
+        <div>
+          <h2>Популярні товари</h2>
+          <p>Адаптивна сітка створена через CSS Grid.</p>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <span>Ноутбук</span>
+          <h3>Acer Study Pro</h3>
+          <p>Легкий ноутбук для навчання, лабораторних і відеозустрічей.</p>
+          <button type="button" data-modal-message="Acer Study Pro додано до списку зацікавлень.">Детальніше</button>
+        </article>
+        <article class="product-card">
+          <span>Монітор</span>
+          <h3>ViewMax 24</h3>
+          <p>Full HD монітор для коду, дизайну та комфортної роботи.</p>
+          <button type="button" data-modal-message="ViewMax 24 додано до списку зацікавлень.">Детальніше</button>
+        </article>
+        <article class="product-card">
+          <span>Клавіатура</span>
+          <h3>KeyLab Compact</h3>
+          <p>Зручна клавіатура для швидкого набору коду та тексту.</p>
+          <button type="button" data-modal-message="KeyLab Compact додано до списку зацікавлень.">Детальніше</button>
+        </article>
+        <article class="product-card">
+          <span>Миша</span>
+          <h3>Click Air</h3>
+          <p>Бездротова миша для роботи вдома, в аудиторії або коворкінгу.</p>
+          <button type="button" data-modal-message="Click Air додано до списку зацікавлень.">Детальніше</button>
+        </article>
+        <article class="product-card">
+          <span>Гарнітура</span>
+          <h3>MeetSound</h3>
+          <p>Гарнітура для онлайн-занять, дзвінків і запису пояснень.</p>
+          <button type="button" data-modal-message="MeetSound додано до списку зацікавлень.">Детальніше</button>
+        </article>
+        <article class="product-card">
+          <span>Підставка</span>
+          <h3>DeskLift</h3>
+          <p>Підставка для ноутбука, що покращує посадку й охолодження.</p>
+          <button type="button" data-modal-message="DeskLift додано до списку зацікавлень.">Детальніше</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <form class="contact-form" id="contactForm">
+        <h2>Форма зворотного зв'язку</h2>
+        <label>
+          Ім'я
+          <input type="text" id="contactName" placeholder="Богдан">
+        </label>
+        <label>
+          Email
+          <input type="email" id="contactEmail" placeholder="student@example.com">
+        </label>
+        <label>
+          Повідомлення
+          <textarea id="contactMessage" rows="4" placeholder="Напишіть повідомлення"></textarea>
+        </label>
+        <button type="submit">Надіслати</button>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>TechStore</span>
+    <span>КН-22, Барулін Богдан</span>
+  </footer>
+
+  <div class="custom-modal hidden" id="customModal" aria-hidden="true">
+    <div class="custom-modal-content" role="dialog" aria-modal="true" aria-labelledby="customModalTitle">
+      <h2 id="customModalTitle">Повідомлення</h2>
+      <p id="modalMessage">Дію виконано.</p>
+      <button type="button" id="closeModal">Закрити</button>
+    </div>
+  </div>
+</body>
+</html>

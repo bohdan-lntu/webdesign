@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рядки 2 - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 900px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .row { padding: 10px 12px; margin: 10px 0; border: 1px solid #d4dee8; border-radius: 8px; background: #fbfdff; }
+    code { color: #1457a8; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 2. Обробка слів рядка</h1>
+  <p class="task">Варіант 2: підрахувати кількість літер у третьому слові та поміняти місцями перше й останнє слова.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function getWords(text) {
+      return text.trim().split(/\s+/).filter(function(word) {
+        return word.length > 0;
+      });
+    }
+
+    function swapFirstAndLast(words) {
+      const changedWords = words.slice();
+      if (changedWords.length > 1) {
+        const lastIndex = changedWords.length - 1;
+        const temp = changedWords[0];
+        changedWords[0] = changedWords[lastIndex];
+        changedWords[lastIndex] = temp;
+      }
+      return changedWords;
+    }
+
+    const source = prompt("Введіть речення", "JavaScript допомагає швидко створювати інтерактивні сторінки") || "";
+    const words = getWords(source);
+    const thirdWord = words[2] || "";
+    const changed = swapFirstAndLast(words);
+
+    document.write("<div class='row'><strong>Початковий рядок:</strong><br><code>" + source + "</code></div>");
+    document.write("<div class='row'><strong>Третє слово:</strong> " + (thirdWord || "відсутнє") + "</div>");
+    document.write("<div class='row'><strong>Кількість літер у третьому слові:</strong> " + thirdWord.length + "</div>");
+    document.write("<div class='row'><strong>Після обміну першого й останнього слова:</strong><br><code>" + changed.join(" ") + "</code></div>");
+  </script>
+</body>
+</html>
+

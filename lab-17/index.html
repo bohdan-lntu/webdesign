@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Барулін Богдан, КН-22">
+    <meta name="keywords" content="HTML, CSS, testing, debugging, validation">
+    <meta name="description" content="Лабораторна робота №17: тестування та відлагодження HTML і CSS коду">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Lab 17 - КН-22, Барулін Богдан</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <!-- MAIN HEADER START -->
+    <header class="main-header">
+        <a class="logo" href="index.html" aria-label="На головну сторінку">WebAudit</a>
+        <nav class="main-nav" aria-label="Головна навігація">
+            <a href="#audit">Аудит</a>
+            <a href="#checks">Перевірки</a>
+            <a href="#contacts">Контакти</a>
+            <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C</a>
+        </nav>
+    </header>
+    <!-- MAIN HEADER END -->
+
+    <main>
+        <!-- HERO SECTION START -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">Лабораторне заняття №6 / Lab 17</p>
+                <h1>Тестування та відлагодження коду</h1>
+                <p>Сторінка демонструє валідну структуру HTML, впорядкований CSS, семантичні блоки, адаптивність і базову інтерактивність для перевірки у браузері.</p>
+                <button class="primary-button" type="button" id="runCheck">Запустити локальну перевірку</button>
+            </div>
+            <div class="student-card">
+                <strong>Виконав</strong>
+                <span>КН-22, Барулін Богдан</span>
+                <span>Варіант 2</span>
+            </div>
+        </section>
+        <!-- HERO SECTION END -->
+
+        <!-- AUDIT SECTION START -->
+        <section class="section" id="audit">
+            <h2>Аудит HTML та CSS</h2>
+            <div class="card-grid">
+                <article class="info-card">
+                    <h3>HTML</h3>
+                    <p>Використано doctype HTML5, метатеги, семантичні елементи, один h1, атрибути alt і коректні посилання.</p>
+                </article>
+                <article class="info-card">
+                    <h3>CSS</h3>
+                    <p>Класи названі латиницею, стилі згруповані за модулями, використано Flexbox, Grid і media queries.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Адаптивність</h3>
+                    <p>Макет перебудовується для мобільних екранів, картки переходять в одну колонку, навігація переноситься.</p>
+                </article>
+            </div>
+        </section>
+        <!-- AUDIT SECTION END -->
+
+        <!-- CHECKS SECTION START -->
+        <section class="section" id="checks">
+            <h2>Результати перевірки</h2>
+            <ul class="check-list">
+                <li>HTML має чітку ієрархічну структуру.</li>
+                <li>CSS винесено в окремий файл.</li>
+                <li>JavaScript винесено в окремий файл і підключено через defer.</li>
+                <li>Для зображення використано alt.</li>
+                <li>Зовнішнє посилання відкривається у новій вкладці.</li>
+                <li>Контакти мають посилання mailto та tel.</li>
+            </ul>
+            <p class="status" id="checkStatus">Локальна перевірка ще не запускалася.</p>
+        </section>
+        <!-- CHECKS SECTION END -->
+
+        <!-- MEDIA SECTION START -->
+        <section class="section media-section">
+            <h2>Приклад зображення</h2>
+            <img src="images/audit-card.svg" alt="Ілюстрація аудиту HTML та CSS коду">
+        </section>
+        <!-- MEDIA SECTION END -->
+    </main>
+
+    <!-- FOOTER START -->
+    <footer class="main-footer" id="contacts">
+        <div>
+            <strong>WebAudit</strong>
+            <p>Навчальна сторінка для перевірки HTML, CSS та адаптивності.</p>
+        </div>
+        <address>
+            <a href="mailto:student@example.com">student@example.com</a>
+            <a href="tel:+380000000000">+38 000 000 00 00</a>
+        </address>
+    </footer>
+    <!-- FOOTER END -->
+</body>
+</html>

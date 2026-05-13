@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Countdown - КН-22, Барулін Богдан</title>
+  <style>
+    body { max-width: 860px; margin: 32px auto; font-family: Arial, sans-serif; line-height: 1.55; color: #222; }
+    .task { padding: 14px 18px; background: #eef5ff; border-left: 4px solid #2768b5; }
+    .result { margin-top: 18px; padding: 16px; border: 1px solid #ccd7e4; border-radius: 8px; background: #fbfdff; }
+  </style>
+</head>
+<body>
+  <h1>Завдання 2. Розрахунок часу до події</h1>
+  <p class="task">За допомогою Date обчислити, скільки часу залишилося до початку наступного навчального року.</p>
+  <p><strong>Розробник:</strong> КН-22, Барулін Богдан.</p>
+
+  <script>
+    "use strict";
+
+    function getTimeToEvent(eventDate) {
+      const day = 86400000;
+      const hour = 3600000;
+      const minute = 60000;
+      const now = new Date();
+      const difference = eventDate.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        return "подія вже настала";
+      }
+
+      const days = Math.floor(difference / day);
+      const hours = Math.floor((difference - days * day) / hour);
+      const minutes = Math.floor((difference - days * day - hours * hour) / minute);
+
+      return days + " днів, " + hours + " годин, " + minutes + " хвилин";
+    }
+
+    const today = new Date();
+    let studyYear = today.getFullYear();
+    let studyStart = new Date(studyYear, 8, 1, 9, 0);
+
+    if (studyStart.getTime() <= today.getTime()) {
+      studyStart = new Date(studyYear + 1, 8, 1, 9, 0);
+    }
+
+    document.write("<div class='result'>");
+    document.write("<p><strong>Подія:</strong> початок навчального року</p>");
+    document.write("<p><strong>Дата події:</strong> " + studyStart.toLocaleDateString("uk-UA") + "</p>");
+    document.write("<p><strong>Залишилося:</strong> " + getTimeToEvent(studyStart) + "</p>");
+    document.write("</div>");
+  </script>
+</body>
+</html>
+

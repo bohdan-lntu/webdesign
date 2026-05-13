@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap - КН-22, Барулін Богдан</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">TechStore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Перемкнути навігацію">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#products">Товари</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Контакти</a></li>
+          <li class="nav-item"><a class="nav-link" href="vanilla.html">Vanilla-версія</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-light py-5 border-bottom">
+    <div class="container py-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <p class="text-primary fw-bold text-uppercase mb-2">Bootstrap 5</p>
+          <h1 class="display-5 fw-bold">Техніка для навчання та роботи</h1>
+          <p class="lead">Готовий інтерфейс інтернет-магазину, створений за допомогою сітки Bootstrap, карток, кнопок, форми та модального вікна.</p>
+          <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#actionModal">Отримати консультацію</button>
+        </div>
+        <div class="col-lg-5">
+          <div class="p-4 rounded-3 bg-white shadow-sm">
+            <h2 class="h4">КН-22, Барулін Богдан</h2>
+            <p class="mb-0">Лабораторна робота №16. Підхід з використанням Bootstrap.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="products" class="container py-5">
+      <div class="d-flex justify-content-between align-items-end gap-3 mb-4">
+        <div>
+          <h2 class="fw-bold">Популярні товари</h2>
+          <p class="text-secondary mb-0">Адаптивна сітка: col-12, col-md-6, col-lg-4.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-primary mb-3">Ноутбук</span>
+              <h3 class="h5">Acer Study Pro</h3>
+              <p class="card-text">Легкий ноутбук для навчання, лабораторних і відеозустрічей.</p>
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Детальніше</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-success mb-3">Монітор</span>
+              <h3 class="h5">ViewMax 24</h3>
+              <p class="card-text">Full HD монітор для коду, дизайну та комфортної роботи.</p>
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Детальніше</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-warning mb-3">Клавіатура</span>
+              <h3 class="h5">KeyLab Compact</h3>
+              <p class="card-text">Зручна клавіатура для швидкого набору коду та тексту.</p>
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Детальніше</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-info mb-3">Миша</span>
+              <h3 class="h5">Click Air</h3>
+              <p class="card-text">Бездротова миша для роботи вдома, в аудиторії або коворкінгу.</p>
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Детальніше</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-danger mb-3">Гарнітура</span>
+              <h3 class="h5">MeetSound</h3>
+              <p class="card-text">Гарнітура для онлайн-занять, дзвінків і запису пояснень.</p>
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Детальніше</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <span class="badge text-bg-secondary mb-3">Підставка</span>
+              <h3 class="h5">DeskLift</h3>
+              <p class="card-text">Підставка для ноутбука, що покращує посадку й охолодження.</p>
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#actionModal">Детальніше</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-light py-5 border-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <h2 class="fw-bold">Форма зворотного зв'язку</h2>
+            <form class="mt-3">
+              <div class="mb-3">
+                <label class="form-label" for="bsName">Ім'я</label>
+                <input class="form-control" id="bsName" type="text" placeholder="Богдан">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="bsEmail">Email</label>
+                <input class="form-control" id="bsEmail" type="email" placeholder="student@example.com">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="bsMessage">Повідомлення</label>
+                <textarea class="form-control" id="bsMessage" rows="4" placeholder="Напишіть повідомлення"></textarea>
+              </div>
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#actionModal">Надіслати</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 bg-primary text-white">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>TechStore</span>
+      <span>КН-22, Барулін Богдан</span>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="actionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="actionModalLabel">Повідомлення</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+        </div>
+        <div class="modal-body">
+          Дію виконано. Це модальне вікно створене готовим компонентом Bootstrap.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

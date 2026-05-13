@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 15 - КН-22, Барулін Богдан</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Лабораторне заняття №15</p>
+      <h1>Інтерактивний вебдодаток</h1>
+      <p>Робота з DOM, подіями, формами, модальним вікном, масивом завдань і динамічним створенням елементів.</p>
+    </div>
+    <div class="student-card">
+      <strong>Виконав</strong>
+      <span>КН-22, Барулін Богдан</span>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="panel greeting">
+      <h2>Привітання користувача</h2>
+      <div class="inline-form">
+        <input type="text" id="userName" placeholder="Введіть ім'я">
+        <button id="greetBtn" type="button">Привітатися</button>
+      </div>
+      <p id="greetOutput" class="message"></p>
+    </section>
+
+    <section class="panel form-section">
+      <h2>Форма реєстрації</h2>
+      <form id="registerForm" novalidate>
+        <label>
+          Email
+          <input type="email" id="email" placeholder="student@example.com" required>
+        </label>
+        <label>
+          Пароль
+          <input type="password" id="password" placeholder="Не менше 6 символів" required>
+        </label>
+        <button type="submit">Зареєструватися</button>
+      </form>
+      <p id="formMessage" class="message"></p>
+    </section>
+
+    <section class="panel modal-section">
+      <h2>Модальне вікно</h2>
+      <p>Вікно відкривається кнопкою, закривається кнопкою, клавішею Escape або кліком по затемненій області.</p>
+      <button id="openModal" type="button">Відкрити інформацію</button>
+    </section>
+
+    <section class="panel todo-section">
+      <h2>Список завдань</h2>
+      <div class="inline-form">
+        <input type="text" id="taskInput" placeholder="Нове завдання">
+        <button id="addTaskBtn" type="button">Додати</button>
+      </div>
+      <div class="filters">
+        <button type="button" data-filter="all" class="active-filter">Усі</button>
+        <button type="button" data-filter="active">Активні</button>
+        <button type="button" data-filter="done">Виконані</button>
+      </div>
+      <ul id="taskList" class="task-list"></ul>
+      <p id="taskCounter" class="counter"></p>
+    </section>
+
+    <section class="panel cards-section">
+      <h2>Картки послуг</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>DOM-аналіз</h3>
+          <p>Пошук і зміна елементів сторінки.</p>
+          <p class="details hidden">Використовуються querySelector, querySelectorAll, textContent, classList і createElement.</p>
+          <button class="detailsBtn" type="button">Детальніше</button>
+        </article>
+        <article class="card">
+          <h3>Валідація форм</h3>
+          <p>Перевірка email і пароля перед відправленням.</p>
+          <p class="details hidden">Стандартне перезавантаження сторінки блокується через event.preventDefault().</p>
+          <button class="detailsBtn" type="button">Детальніше</button>
+        </article>
+        <article class="card">
+          <h3>Todo-список</h3>
+          <p>Додавання, виконання, видалення та фільтрація завдань.</p>
+          <p class="details hidden">Дані зберігаються у масиві об'єктів, а інтерфейс оновлюється функцією renderTasks().</p>
+          <button class="detailsBtn" type="button">Детальніше</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Матеріали</h2>
+      <a class="text-link" href="control-questions.md">Відповіді на контрольні питання</a>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Інформаційне повідомлення</h3>
+      <p>Це модальне вікно створене засобами JavaScript без jQuery та без inline-обробників у HTML.</p>
+      <button id="closeModal" type="button">Закрити</button>
+    </div>
+  </div>
+</body>
+</html>
